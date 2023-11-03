@@ -1,0 +1,2217 @@
+{
+	"info": {
+		"_postman_id": "a0ec4f96-018c-45b0-86c6-7c16fefa0898",
+		"name": "Amazon Bedrock API",
+		"description": "document provides detailed information about the Amazon Bedrock API actions and their parameters",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "490318"
+	},
+	"item": [
+		{
+			"name": "Actions",
+			"item": [
+				{
+					"name": "Prompts",
+					"item": [
+						{
+							"name": "{prompt_id}",
+							"item": [
+								{
+									"name": "GetPrompt: Retrieves the prompt for the specified prompt Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/playgrounds/prompts/:prompt_Id",
+											"protocol": "https",
+											"host": [
+												"bedrock",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"playgrounds",
+												"prompts",
+												":prompt_Id"
+											],
+											"variable": [
+												{
+													"key": "prompt_Id",
+													"value": "I8NI3Vt370",
+													"description": "The Id of the prompt to retrieve"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ListPrompts: Returns a list of all prompts stored in your prompt history",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/playgrounds/prompts?bookmarked=false&maxResults=10&Modality=TEXT_TO_TEXT",
+									"protocol": "https",
+									"host": [
+										"bedrock",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"playgrounds",
+										"prompts"
+									],
+									"query": [
+										{
+											"key": "bookmarked",
+											"value": "false",
+											"description": "Return only the bookmarked prompts.\n\n"
+										},
+										{
+											"key": "maxResults",
+											"value": "10",
+											"description": "Maximum number of results to include in the response.\n\n"
+										},
+										{
+											"key": "Modality",
+											"value": "TEXT_TO_TEXT",
+											"description": "Modality of the prompt.\n\n"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdatePrompt: Updates the bookmarked state of a previously saved prompt",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"bookmarked\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/playgrounds/prompts/:promptId ",
+									"protocol": "https",
+									"host": [
+										"bedrock",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"playgrounds",
+										"prompts",
+										":promptId "
+									],
+									"variable": [
+										{
+											"key": "promptId ",
+											"value": "I8NI3Vt370"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletePrompt: Delete the prompt with the specified prompt Id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/playgrounds/prompts/:promptId",
+									"protocol": "https",
+									"host": [
+										"bedrock",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"playgrounds",
+										"prompts",
+										":promptId"
+									],
+									"variable": [
+										{
+											"key": "promptId",
+											"value": "I8NI3Vt370",
+											"description": "The Id of the prompt to delete.\n\nLength Constraints: Minimum length of 1. Maximum length of 36.\n\nPattern: ^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$\n\nRequired: Yes"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Fine-tune-jobs",
+					"item": [
+						{
+							"name": "{job_Identifier}",
+							"item": [
+								{
+									"name": "Stop",
+									"item": [
+										{
+											"name": "StopModelCustomizationJob: Stops an active model customization job",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/model-customization-jobs/:job_Identifier/stop",
+													"protocol": "https",
+													"host": [
+														"bedrock",
+														"{{AWS_Region}}",
+														"amazonaws",
+														"com"
+													],
+													"path": [
+														"model-customization-jobs",
+														":job_Identifier",
+														"stop"
+													],
+													"variable": [
+														{
+															"key": "job_Identifier",
+															"value": "",
+															"description": "Job identifier of the job to stop.\n\n"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "https://bedrock.us-east-1.amazonaws.com/fine-tunes/:fine_tune_id/cancel",
+															"protocol": "https",
+															"host": [
+																"bedrock",
+																"us-east-1",
+																"amazonaws",
+																"com"
+															],
+															"path": [
+																"fine-tunes",
+																":fine_tune_id",
+																"cancel"
+															],
+															"variable": [
+																{
+																	"key": "fine_tune_id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "GetModelCustomizationJob: Retrieves the properties associated with a model-customization job, including the status of the job",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/model-customization-jobs/:job_Identifier",
+											"protocol": "https",
+											"host": [
+												"bedrock",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model-customization-jobs",
+												":job_Identifier"
+											],
+											"variable": [
+												{
+													"key": "job_Identifier",
+													"value": "",
+													"description": "Identifier for the customization job"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "https://bedrock.us-east-1.amazonaws.com/fine-tunes",
+													"protocol": "https",
+													"host": [
+														"bedrock",
+														"us-east-1",
+														"amazonaws",
+														"com"
+													],
+													"path": [
+														"fine-tunes"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "CreateModelCustomizationJob:Creates a fine-tuning job to customize a base model",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"baseModelIdentifier\": \"string\",\n   \"clientRequestToken\": \"string\",\n   \"customModelKmsKeyId\": \"string\",\n   \"customModelName\": \"string\",\n   \"customModelTags\": [ \n      { \n         \"key\": \"string\",\n         \"value\": \"string\"\n      }\n   ],\n   \"hyperParameters\": { \n      \"string\" : \"string\" \n   },\n   \"jobName\": \"string\",\n   \"jobTags\": [ \n      { \n         \"key\": \"string\",\n         \"value\": \"string\"\n      }\n   ],\n   \"outputDataConfig\": { \n      \"s3Uri\": \"string\"\n   },\n   \"roleArn\": \"string\",\n   \"trainingDataConfig\": { \n      \"s3Uri\": \"string\"\n   },\n   \"validationDataConfig\": { \n      \"validators\": [ \n         { \n            \"s3Uri\": \"string\"\n         }\n      ]\n   },\n   \"vpcConfig\": { \n      \"securityGroupIds\": [ \"string\" ],\n      \"subnetIds\": [ \"string\" ]\n   }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/model-customization-jobs",
+									"protocol": "https",
+									"host": [
+										"bedrock",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model-customization-jobs"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"training_file\": \"<string>\",\n  \"validation_file\": \"<string>\",\n  \"model\": \"curie\",\n  \"n_epochs\": 4,\n  \"batch_size\": null,\n  \"learning_rate_multiplier\": null,\n  \"prompt_loss_weight\": 0.01,\n  \"compute_classification_metrics\": false,\n  \"classification_n_classes\": null,\n  \"classification_positive_class\": null,\n  \"classification_betas\": null,\n  \"suffix\": null\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock.us-east-1.amazonaws.com/fine-tunes",
+											"protocol": "https",
+											"host": [
+												"bedrock",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"fine-tunes"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "ListModelCustomizationJobs: Returns a list of model customization jobs that you have submitted. You can filter the jobs to return based on one or more criteria",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/model-customization-jobs",
+									"protocol": "https",
+									"host": [
+										"bedrock",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model-customization-jobs"
+									],
+									"query": [
+										{
+											"key": "creationTimeAfter",
+											"value": "",
+											"description": "Return customization jobs created after the specified time.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "creationTimeBefore",
+											"value": "",
+											"description": "Return customization jobs created before the specified time.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "maxResults",
+											"value": "",
+											"description": "Maximum number of results to return in the response.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "nameContains",
+											"value": "",
+											"description": "Return customization jobs only if the job name contains these characters.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "nextToken",
+											"value": "",
+											"description": "Continuation token from the previous response, for Amazon Bedrock to list the next set of results.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": "",
+											"description": "The field to sort by in the returned list of jobs.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "sortOrder",
+											"value": "",
+											"description": "The sort order of the results.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "statusEquals",
+											"value": "",
+											"description": "Return customization jobs with the specified status.\n\n",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Models",
+					"item": [
+						{
+							"name": "{model_Identifier}",
+							"item": [
+								{
+									"name": "GetCustomModel: Get the properties associated with a Bedrock custom model that you have created",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/custom-models/:model_Identifier",
+											"protocol": "https",
+											"host": [
+												"bedrock",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"custom-models",
+												":model_Identifier"
+											],
+											"variable": [
+												{
+													"key": "model_Identifier",
+													"value": "",
+													"description": "Name or ARN of the custom model"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "InvokeModel: Invokes the specified Bedrock model to run inference using the input provided in the request body",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "X-Amzn-Bedrock-Save",
+												"value": "true",
+												"description": "Determines whether to save this prompt in your prompt history. Enter true or false. The default is false\n",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": " {\"prompt\": \"\\n\\nHuman:Hello \\n\\nAssistant:\",\r\n    \"temperature\": 1,\r\n    \"top_p\": 1,\r\n    \"top_k\": 500,\r\n    \"max_tokens_to_sample\": 500,\r\n    \"stop_sequences\": [\"\\n\\nHuman:\"]\r\n }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												":model_identifier",
+												"invoke"
+											],
+											"variable": [
+												{
+													"key": "model_identifier",
+													"value": "anthropic.claude-v2",
+													"description": "Identifier of the model"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "amazon.titan-tg1-large",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "x-amzn-bedrock-save",
+														"value": "true",
+														"type": "text"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\"inputText\": \"Hello world\"} ",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+													"protocol": "https",
+													"host": [
+														"bedrock-runtime",
+														"{{AWS_Region}}",
+														"amazonaws",
+														"com"
+													],
+													"path": [
+														"model",
+														"amazon.titan-tg1-large",
+														"invoke"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "amazon.titan-e1t-medium",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\"inputText\": \"Amazon Bedrock supports foundation models from industry-leading providers such as AI21 Labs, Anthropic, Stability AI, and Amazon. Choose the model that is best suited to achieving your unique goals.\"\n    } ",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+													"protocol": "https",
+													"host": [
+														"bedrock-runtime",
+														"{{AWS_Region}}",
+														"amazonaws",
+														"com"
+													],
+													"path": [
+														"model",
+														":model_identifier",
+														"invoke"
+													],
+													"variable": [
+														{
+															"key": "model_identifier",
+															"value": "amazon.titan-embed-text-v1",
+															"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n- amazon.titan-e1t-medium"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Fri, 15 Sep 2023 19:54:38 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Content-Length",
+													"value": "46382"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "x-amzn-RequestId",
+													"value": "e019dd5d-c2d9-4cc7-9b63-7b3e7dbecbd9"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"embedding\": [\n        -0.026367188,\n        0.14160156,\n        -0.119140625,\n        0.34960938,\n        -0.16992188,\n        0.037841797,\n        0.3125,\n        0.005859375,\n        0.390625,\n        -0.62109375,\n        -0.22460938,\n        -0.27734375,\n        -0.0022125244,\n        0.05493164,\n        -0.8203125,\n        -0.265625,\n        -0.265625,\n        -0.03125,\n        -0.19824219,\n        -0.28515625,\n        -0.13183594,\n        -0.063964844,\n        -0.064453125,\n        0.35742188,\n        -0.09033203,\n        -0.08691406,\n        -0.22460938,\n        0.15820312,\n        0.13867188,\n        0.28320312,\n        1.0078125,\n        -0.09814453,\n        0.28320312,\n        0.13671875,\n        0.14257812,\n        -0.103515625,\n        -0.19921875,\n        -0.16015625,\n        -0.026367188,\n        -0.21679688,\n        0.22460938,\n        -0.20996094,\n        0.043701172,\n        0.12451172,\n        -0.3203125,\n        0.4921875,\n        -0.16015625,\n        0.64453125,\n        -0.078125,\n        -0.028442383,\n        0.17382812,\n        0.03491211,\n        0.27929688,\n        -0.265625,\n        -0.26171875,\n        -0.052978516,\n        0.3046875,\n        -0.052001953,\n        0.6015625,\n        -0.578125,\n        -0.31640625,\n        -0.057617188,\n        -0.104003906,\n        0.06347656,\n        -0.12451172,\n        0.359375,\n        0.1328125,\n        -0.38867188,\n        0.65625,\n        -0.020751953,\n        -0.044189453,\n        -0.23242188,\n        -0.31835938,\n        -0.30664062,\n        -0.34375,\n        -0.59765625,\n        -0.6171875,\n        -0.34960938,\n        -0.25195312,\n        0.20800781,\n        -0.19824219,\n        0.23535156,\n        0.35351562,\n        -0.051513672,\n        0.26757812,\n        -0.041503906,\n        -0.26757812,\n        0.088378906,\n        -0.21484375,\n        0.03881836,\n        -0.42382812,\n        0.265625,\n        -0.7421875,\n        -0.096191406,\n        -0.0099487305,\n        -0.62109375,\n        -0.14648438,\n        -0.6484375,\n        0.27539062,\n        0.003616333,\n        -0.4453125,\n        0.51171875,\n        -0.19042969,\n        0.40820312,\n        -0.4765625,\n        0.27929688,\n        -0.009460449,\n        0.14941406,\n        -0.59375,\n        -0.2421875,\n        -0.45898438,\n        0.5390625,\n        0.39648438,\n        -0.41796875,\n        -0.15820312,\n        0.04272461,\n        -0.484375,\n        0.09033203,\n        0.010375977,\n        -0.118652344,\n        0.16796875,\n        0.36914062,\n        -0.52734375,\n        -0.6796875,\n        0.013427734,\n        0.40234375,\n        0.40625,\n        -0.59375,\n        0.18164062,\n        0.76953125,\n        -0.36523438,\n        0.064453125,\n        0.60546875,\n        -0.18261719,\n        0.009033203,\n        0.4609375,\n        0.515625,\n        -0.44140625,\n        0.9375,\n        -0.14355469,\n        -0.115722656,\n        0.125,\n        -0.088378906,\n        0.18554688,\n        0.45117188,\n        0.14648438,\n        -0.18164062,\n        -0.5390625,\n        -0.24414062,\n        0.39453125,\n        -0.5703125,\n        -0.23046875,\n        0.0126953125,\n        0.31640625,\n        0.359375,\n        0.13183594,\n        -0.44726562,\n        0.0064697266,\n        0.43554688,\n        -0.19921875,\n        0.25976562,\n        0.39453125,\n        -0.15039062,\n        -0.075683594,\n        0.4765625,\n        -0.091308594,\n        -0.6015625,\n        0.122558594,\n        0.42382812,\n        0.53515625,\n        -0.13964844,\n        0.25585938,\n        0.0048828125,\n        -0.09033203,\n        0.7578125,\n        -0.30078125,\n        -0.0038604736,\n        -0.51171875,\n        -0.39453125,\n        0.4609375,\n        0.45898438,\n        0.09423828,\n        0.39648438,\n        -0.18945312,\n        0.20117188,\n        0.16699219,\n        -0.18359375,\n        0.5078125,\n        -0.58203125,\n        -0.48632812,\n        -0.32421875,\n        0.3359375,\n        -0.059814453,\n        -0.18066406,\n        0.099121094,\n        -0.04248047,\n        0.63671875,\n        0.3828125,\n        0.47851562,\n        0.18847656,\n        -0.32226562,\n        -0.41796875,\n        0.3125,\n        -0.63671875,\n        -0.18652344,\n        0.33984375,\n        -0.16503906,\n        -0.35546875,\n        0.32226562,\n        -0.31445312,\n        -0.25390625,\n        0.39648438,\n        -0.34375,\n        -0.53125,\n        -0.33984375,\n        0.18359375,\n        -0.028076172,\n        0.019165039,\n        -0.18554688,\n        0.36914062,\n        -0.65625,\n        -0.30078125,\n        -0.048828125,\n        -0.40429688,\n        -0.21582031,\n        -0.05053711,\n        0.23046875,\n        -0.38671875,\n        -0.26757812,\n        -0.056152344,\n        -0.3515625,\n        0.11425781,\n        0.047851562,\n        -0.56640625,\n        -0.34960938,\n        0.27929688,\n        -0.30664062,\n        -0.23632812,\n        0.122558594,\n        0.08105469,\n        0.53125,\n        0.40820312,\n        0.17773438,\n        0.26757812,\n        0.19042969,\n        0.15234375,\n        0.034423828,\n        0.110839844,\n        0.36914062,\n        0.040527344,\n        0.020874023,\n        -0.6640625,\n        -0.22851562,\n        0.064453125,\n        -0.1484375,\n        0.17578125,\n        0.51171875,\n        -0.30273438,\n        0.3203125,\n        0.10888672,\n        0.17871094,\n        0.20214844,\n        0.3203125,\n        -0.52734375,\n        -0.4140625,\n        0.18554688,\n        0.29101562,\n        0.05883789,\n        0.010437012,\n        -0.78515625,\n        0.61328125,\n        0.05444336,\n        -0.24023438,\n        -0.19140625,\n        -0.4140625,\n        0.11816406,\n        0.052490234,\n        -0.47070312,\n        0.20117188,\n        -0.4921875,\n        0.2109375,\n        0.37109375,\n        -0.26367188,\n        -0.49804688,\n        -0.023071289,\n        0.037597656,\n        0.3984375,\n        0.31054688,\n        0.06347656,\n        0.088378906,\n        0.12402344,\n        -0.104003906,\n        -0.34765625,\n        -0.14257812,\n        0.21679688,\n        0.037841797,\n        0.15039062,\n        0.375,\n        -0.20019531,\n        0.24609375,\n        0.07324219,\n        -0.052001953,\n        -0.5078125,\n        0.40625,\n        0.041015625,\n        0.421875,\n        0.61328125,\n        -0.59765625,\n        -0.078125,\n        0.2734375,\n        -0.62890625,\n        -0.515625,\n        0.25195312,\n        -0.033447266,\n        -0.6796875,\n        0.07910156,\n        -0.14941406,\n        -0.33203125,\n        0.23730469,\n        0.45703125,\n        -0.375,\n        -0.4765625,\n        -0.09375,\n        -0.2265625,\n        0.10107422,\n        0.08886719,\n        0.08984375,\n        -0.012329102,\n        0.095214844,\n        -0.27929688,\n        -0.7578125,\n        0.15625,\n        -0.3203125,\n        -0.12890625,\n        -0.06542969,\n        0.37109375,\n        0.17871094,\n        0.45507812,\n        0.080078125,\n        -0.022460938,\n        -0.020507812,\n        0.122558594,\n        0.15429688,\n        0.95703125,\n        -0.23730469,\n        0.25976562,\n        0.103027344,\n        0.16015625,\n        0.118652344,\n        0.22363281,\n        0.15625,\n        0.5,\n        -0.19824219,\n        -0.48046875,\n        0.26757812,\n        -0.70703125,\n        -0.515625,\n        -0.029907227,\n        0.032714844,\n        -0.21972656,\n        0.640625,\n        -0.42773438,\n        -0.32226562,\n        0.8046875,\n        -0.083984375,\n        -0.09423828,\n        0.22265625,\n        -0.546875,\n        0.50390625,\n        -0.609375,\n        -0.25585938,\n        0.5,\n        1.0078125,\n        -0.36523438,\n        0.072753906,\n        0.12890625,\n        -0.2890625,\n        0.18261719,\n        -0.053955078,\n        0.42578125,\n        -0.09765625,\n        -0.23632812,\n        0.09765625,\n        0.33984375,\n        -0.25390625,\n        -0.29296875,\n        0.005126953,\n        -0.10498047,\n        -0.18945312,\n        -0.010864258,\n        0.19238281,\n        -0.017944336,\n        -0.078125,\n        0.609375,\n        -0.0021820068,\n        0.45507812,\n        0.044921875,\n        0.53515625,\n        0.4765625,\n        0.099121094,\n        0.84765625,\n        -0.32226562,\n        0.048828125,\n        0.04663086,\n        -0.03112793,\n        -0.48632812,\n        -0.20410156,\n        0.34960938,\n        -0.21484375,\n        -0.671875,\n        0.296875,\n        0.20507812,\n        0.23632812,\n        0.171875,\n        0.43945312,\n        -0.31445312,\n        0.091796875,\n        -0.58984375,\n        -0.17675781,\n        -0.24414062,\n        -0.04296875,\n        0.078125,\n        -0.30273438,\n        -0.59765625,\n        0.22460938,\n        0.10058594,\n        -0.06201172,\n        -0.27929688,\n        0.40625,\n        0.35742188,\n        -0.004852295,\n        0.19335938,\n        -0.47460938,\n        0.328125,\n        0.625,\n        0.29492188,\n        0.13183594,\n        0.3515625,\n        -0.51171875,\n        -0.24023438,\n        -0.3203125,\n        -0.20117188,\n        0.15039062,\n        -0.0010375977,\n        -0.4609375,\n        0.56640625,\n        0.1796875,\n        -0.3984375,\n        -0.109375,\n        0.13476562,\n        -0.20800781,\n        0.41601562,\n        -0.19140625,\n        0.095214844,\n        -0.29101562,\n        -0.057861328,\n        -0.1640625,\n        0.25976562,\n        -0.36132812,\n        -0.34570312,\n        -0.40234375,\n        -0.43359375,\n        -0.625,\n        -0.076171875,\n        0.6015625,\n        -0.07861328,\n        0.48046875,\n        -0.27539062,\n        -0.265625,\n        -0.29492188,\n        -0.53125,\n        -0.17871094,\n        0.0076293945,\n        0.54296875,\n        0.4921875,\n        -0.06738281,\n        0.2890625,\n        0.37890625,\n        -0.00037765503,\n        -0.0020141602,\n        -0.37695312,\n        0.265625,\n        -0.02319336,\n        0.045654297,\n        0.103515625,\n        0.23632812,\n        0.11621094,\n        -0.099609375,\n        -0.044677734,\n        0.16113281,\n        -0.08544922,\n        -0.005859375,\n        0.20117188,\n        0.19140625,\n        -0.1328125,\n        0.2109375,\n        0.41796875,\n        0.1484375,\n        0.3828125,\n        -0.23632812,\n        0.037841797,\n        0.49414062,\n        0.58984375,\n        0.421875,\n        0.076660156,\n        0.12060547,\n        -0.38085938,\n        -0.33398438,\n        0.10498047,\n        0.07373047,\n        -0.010559082,\n        -0.03149414,\n        0.12158203,\n        -0.35546875,\n        -0.051757812,\n        0.2890625,\n        -0.61328125,\n        -0.8203125,\n        0.22167969,\n        -0.33398438,\n        0.059570312,\n        0.045166016,\n        -0.515625,\n        0.48046875,\n        0.4296875,\n        0.23339844,\n        -0.048828125,\n        0.0126953125,\n        0.32617188,\n        -0.37304688,\n        0.43359375,\n        -0.11425781,\n        0.25,\n        0.20117188,\n        0.16210938,\n        -0.060791016,\n        -0.19628906,\n        0.43164062,\n        0.37109375,\n        -0.09277344,\n        -0.08984375,\n        0.53125,\n        0.28515625,\n        -0.08935547,\n        -0.14257812,\n        0.0048217773,\n        0.24511719,\n        0.060302734,\n        -0.051757812,\n        0.20605469,\n        -0.14257812,\n        -0.20117188,\n        -0.079589844,\n        -0.28125,\n        -0.28320312,\n        -0.006378174,\n        0.66796875,\n        0.14746094,\n        0.14355469,\n        -0.014221191,\n        -0.012268066,\n        0.026245117,\n        -0.12451172,\n        -0.4296875,\n        0.46484375,\n        0.67578125,\n        -0.42578125,\n        0.122558594,\n        -0.119140625,\n        0.11621094,\n        -0.14355469,\n        -0.23339844,\n        -0.27734375,\n        0.5625,\n        0.6171875,\n        0.25976562,\n        -0.38671875,\n        -0.060791016,\n        -0.47851562,\n        -0.54296875,\n        0.40820312,\n        0.007873535,\n        -0.15527344,\n        -0.0023956299,\n        -0.74609375,\n        0.33789062,\n        0.36523438,\n        -0.66796875,\n        0.54296875,\n        0.28320312,\n        -0.51953125,\n        -0.09277344,\n        -0.17285156,\n        -0.4921875,\n        0.0000834465,\n        0.5390625,\n        0.042236328,\n        0.026733398,\n        -0.010009766,\n        0.49414062,\n        -0.51953125,\n        -0.38085938,\n        0.32226562,\n        -0.2109375,\n        0.20117188,\n        0.28515625,\n        0.27734375,\n        -0.41015625,\n        0.24511719,\n        -0.10205078,\n        -0.45898438,\n        -0.38085938,\n        0.107421875,\n        0.022094727,\n        0.34375,\n        -0.33398438,\n        0.25390625,\n        -1.1328125,\n        0.21679688,\n        -0.56640625,\n        -0.33203125,\n        -0.45507812,\n        0.07910156,\n        0.24609375,\n        -0.484375,\n        0.26367188,\n        -0.17285156,\n        -0.20019531,\n        0.296875,\n        0.18066406,\n        -0.23828125,\n        -0.00970459,\n        -0.61328125,\n        0.20800781,\n        -0.05126953,\n        -0.5625,\n        0.25390625,\n        -0.12060547,\n        -0.14648438,\n        0.33984375,\n        -0.14160156,\n        0.29296875,\n        0.025756836,\n        0.34375,\n        -0.057617188,\n        0.15820312,\n        -0.30078125,\n        0.21386719,\n        -0.011779785,\n        0.24023438,\n        -0.025390625,\n        -0.13769531,\n        0.23046875,\n        0.47070312,\n        0.640625,\n        -0.296875,\n        -0.026489258,\n        -0.0040893555,\n        -0.56640625,\n        -0.45117188,\n        0.33984375,\n        -0.18554688,\n        0.057373047,\n        -0.25,\n        0.2734375,\n        0.3828125,\n        -0.0026397705,\n        -0.30273438,\n        -0.0008659363,\n        0.49414062,\n        -0.024780273,\n        0.79296875,\n        0.001045227,\n        0.42773438,\n        -0.15136719,\n        -0.40234375,\n        0.041992188,\n        0.037109375,\n        0.109375,\n        -0.012207031,\n        0.24316406,\n        -0.13378906,\n        0.3515625,\n        -0.10546875,\n        0.050048828,\n        -0.12597656,\n        -0.052978516,\n        0.32226562,\n        -0.35351562,\n        -0.29296875,\n        -0.20898438,\n        -0.29101562,\n        -0.4609375,\n        -0.20703125,\n        -0.21875,\n        -0.20117188,\n        0.17675781,\n        0.056884766,\n        0.76953125,\n        -0.16796875,\n        0.26953125,\n        -0.4453125,\n        0.008117676,\n        -0.58203125,\n        -0.33007812,\n        0.096191406,\n        0.359375,\n        0.051513672,\n        -0.19140625,\n        -0.14746094,\n        -0.671875,\n        -0.23730469,\n        0.390625,\n        0.49023438,\n        -0.41796875,\n        -0.028198242,\n        0.41796875,\n        -0.00793457,\n        -0.23925781,\n        -0.41601562,\n        0.14746094,\n        0.26757812,\n        0.057373047,\n        -0.15039062,\n        -0.037597656,\n        0.07080078,\n        -0.5703125,\n        0.15820312,\n        -0.03491211,\n        -0.100097656,\n        0.296875,\n        0.51171875,\n        0.1875,\n        -0.24414062,\n        0.06640625,\n        -0.0859375,\n        -0.014526367,\n        0.12695312,\n        -0.20507812,\n        0.16308594,\n        0.031982422,\n        0.10107422,\n        -0.5859375,\n        0.067871094,\n        0.35351562,\n        -0.16015625,\n        0.53515625,\n        -0.07714844,\n        0.08544922,\n        -0.045654297,\n        0.54296875,\n        0.032226562,\n        0.19921875,\n        -0.095214844,\n        -0.19140625,\n        0.4296875,\n        -0.10449219,\n        0.34179688,\n        0.07763672,\n        0.6484375,\n        0.080078125,\n        -0.09423828,\n        -0.28125,\n        0.3046875,\n        0.32226562,\n        -0.203125,\n        0.09375,\n        0.35546875,\n        -0.45117188,\n        -0.12109375,\n        0.017700195,\n        -0.15527344,\n        0.16210938,\n        -0.011657715,\n        -0.2109375,\n        0.009094238,\n        -0.00289917,\n        0.33984375,\n        0.07421875,\n        0.030761719,\n        0.15136719,\n        0.19140625,\n        -0.09277344,\n        -0.37695312,\n        -0.14160156,\n        -0.76171875,\n        0.40625,\n        0.36328125,\n        0.0074768066,\n        0.625,\n        0.15625,\n        -0.047607422,\n        -0.035888672,\n        -0.27734375,\n        -0.26171875,\n        -0.075683594,\n        0.38085938,\n        -0.16113281,\n        -0.087890625,\n        0.26171875,\n        0.005706787,\n        0.15820312,\n        0.40625,\n        -0.004333496,\n        -0.203125,\n        0.13769531,\n        0.4609375,\n        0.640625,\n        0.091796875,\n        -0.1328125,\n        0.35351562,\n        0.37890625,\n        0.33203125,\n        0.375,\n        -0.037841797,\n        -0.02722168,\n        -0.1328125,\n        0.03540039,\n        -0.22070312,\n        -0.099609375,\n        0.21289062,\n        0.013793945,\n        -0.14648438,\n        -0.23828125,\n        -0.40625,\n        -0.2890625,\n        0.3125,\n        0.453125,\n        0.515625,\n        -0.41796875,\n        -0.24316406,\n        0.30664062,\n        0.43359375,\n        0.31445312,\n        -0.44921875,\n        -0.2109375,\n        -0.57421875,\n        -0.05883789,\n        0.059814453,\n        0.6640625,\n        -0.23828125,\n        0.30273438,\n        0.15820312,\n        -0.14941406,\n        -0.35351562,\n        -0.047851562,\n        -0.06689453,\n        -0.111328125,\n        -0.359375,\n        0.21484375,\n        0.043701172,\n        0.037353516,\n        -0.033203125,\n        -0.42578125,\n        -0.048583984,\n        -0.84375,\n        0.11230469,\n        -0.063964844,\n        -0.20410156,\n        0.24609375,\n        -0.25976562,\n        -0.1796875,\n        -0.030883789,\n        0.115234375,\n        0.17089844,\n        -0.04711914,\n        -0.18847656,\n        -0.38867188,\n        0.026611328,\n        0.15917969,\n        -0.0037384033,\n        -0.109375,\n        0.0061035156,\n        0.5078125,\n        0.19042969,\n        -0.69921875,\n        0.27539062,\n        -0.25390625,\n        -0.12597656,\n        0.032958984,\n        0.3828125,\n        -0.017822266,\n        -0.27539062,\n        0.26367188,\n        -0.39453125,\n        -0.2734375,\n        -0.27148438,\n        0.029052734,\n        0.22558594,\n        -0.87109375,\n        -0.33984375,\n        -0.31640625,\n        0.93359375,\n        -0.29882812,\n        -0.23046875,\n        -0.057861328,\n        0.34375,\n        -0.546875,\n        -0.09814453,\n        0.31640625,\n        0.2734375,\n        0.35546875,\n        0.27148438,\n        -0.123046875,\n        -0.171875,\n        0.0019226074,\n        0.328125,\n        -0.4375,\n        -0.03881836,\n        0.22460938,\n        0.053710938,\n        0.091796875,\n        0.16796875,\n        -0.09472656,\n        0.004058838,\n        0.10498047,\n        0.049804688,\n        -0.31054688,\n        -0.049072266,\n        0.2734375,\n        -0.07080078,\n        0.375,\n        0.34960938,\n        0.25195312,\n        -0.42773438,\n        0.26757812,\n        -0.11425781,\n        -0.38085938,\n        -0.29882812,\n        0.088378906,\n        0.31054688,\n        0.026367188,\n        0.07373047,\n        -0.08251953,\n        -0.0071411133,\n        -0.43359375,\n        0.34179688,\n        0.07128906,\n        0.10546875,\n        -0.20117188,\n        0.14941406,\n        0.06933594,\n        -0.26953125,\n        0.04663086,\n        0.53125,\n        -0.12109375,\n        -0.06689453,\n        0.057373047,\n        0.18359375,\n        -0.671875,\n        -0.088378906,\n        0.5078125,\n        0.45507812,\n        0.13085938,\n        0.27734375,\n        0.16210938,\n        0.37109375,\n        0.44140625,\n        0.20507812,\n        0.18359375,\n        -0.31640625,\n        0.34179688,\n        0.13574219,\n        0.100097656,\n        0.15527344,\n        0.25390625,\n        0.18164062,\n        0.16503906,\n        -0.045898438,\n        0.66796875,\n        0.23730469,\n        -0.35546875,\n        -0.15527344,\n        -0.22363281,\n        -0.17871094,\n        0.265625,\n        -0.10644531,\n        0.41210938,\n        -0.640625,\n        0.22460938,\n        -0.73828125,\n        -0.22558594,\n        0.15820312,\n        0.0625,\n        0.26367188,\n        -0.1640625,\n        0.57421875,\n        -0.19726562,\n        0.17382812,\n        -0.091796875,\n        -0.057128906,\n        -0.08691406,\n        0.21972656,\n        0.66796875,\n        0.36523438,\n        -0.5234375,\n        -0.18652344,\n        -0.44335938,\n        -0.24414062,\n        -0.21972656,\n        -0.06347656,\n        -0.28515625,\n        0.10498047,\n        -0.53125,\n        -0.20507812,\n        -0.08935547,\n        -0.049804688,\n        0.020751953,\n        0.08886719,\n        -0.0107421875,\n        -0.033691406,\n        -0.024902344,\n        -0.110839844,\n        -0.34375,\n        -0.203125,\n        0.42773438,\n        -0.6015625,\n        -0.13867188,\n        -0.8203125,\n        0.6328125,\n        0.515625,\n        -0.37109375,\n        0.29296875,\n        0.15625,\n        -0.064453125,\n        -0.060791016,\n        0.056152344,\n        -0.27148438,\n        0.24414062,\n        0.15527344,\n        -0.22070312,\n        -0.18164062,\n        0.58203125,\n        -0.14550781,\n        -0.15039062,\n        -0.13964844,\n        0.033447266,\n        -0.042236328,\n        0.14355469,\n        0.31640625,\n        0.47460938,\n        -0.032958984,\n        -0.5625,\n        0.66796875,\n        -0.328125,\n        0.40429688,\n        -0.42382812,\n        -0.23925781,\n        -0.60546875,\n        -0.29882812,\n        -0.43359375,\n        -0.013671875,\n        -0.045898438,\n        -0.04736328,\n        -0.06201172,\n        -0.546875,\n        0.080078125,\n        -0.45507812,\n        -0.5,\n        -0.1953125,\n        0.9453125,\n        0.055664062,\n        -0.079589844,\n        -0.13964844,\n        0.17578125,\n        0.16503906,\n        0.21289062,\n        0.64453125,\n        0.14355469,\n        0.08251953,\n        0.15039062,\n        0.40820312,\n        -0.17382812,\n        0.28515625,\n        -0.38085938,\n        -0.375,\n        0.15722656,\n        0.18652344,\n        0.6015625,\n        -0.18847656,\n        0.140625,\n        -0.15722656,\n        -0.19238281,\n        -0.30078125,\n        -0.47851562,\n        0.3671875,\n        0.17675781,\n        0.1484375,\n        0.27929688,\n        0.15625,\n        0.39648438,\n        -0.39648438,\n        0.059814453,\n        -0.20507812,\n        -0.546875,\n        -0.66796875,\n        -0.018798828,\n        -0.3671875,\n        -0.49609375,\n        -0.17480469,\n        -0.052978516,\n        -0.1015625,\n        -0.17480469,\n        0.080566406,\n        0.15039062,\n        0.26757812,\n        -0.13867188,\n        -0.47851562,\n        -0.36132812,\n        0.63671875,\n        -0.47070312,\n        0.38671875,\n        0.40625,\n        0.061279297,\n        -0.28515625,\n        -0.08496094,\n        0.14355469,\n        0.006134033,\n        0.07470703,\n        -0.515625,\n        -0.12988281,\n        -0.12792969,\n        0.171875,\n        0.16699219,\n        0.07324219,\n        0.1328125,\n        -0.0058898926,\n        0.03173828,\n        0.32617188,\n        -0.13183594,\n        0.23242188,\n        0.27148438,\n        0.4453125,\n        0.30859375,\n        0.110839844,\n        -0.0049438477,\n        -0.26757812,\n        0.25976562,\n        0.17089844,\n        0.13867188,\n        -0.06689453,\n        -0.033691406,\n        0.30859375,\n        -0.12158203,\n        -0.44921875,\n        0.34960938,\n        -0.06298828,\n        -0.06933594,\n        0.15527344,\n        -0.16699219,\n        0.06225586,\n        0.123535156,\n        -0.38085938,\n        0.076660156,\n        0.36523438,\n        0.15039062,\n        0.1953125,\n        0.16113281,\n        0.14453125,\n        -0.42773438,\n        0.059326172,\n        0.19238281,\n        0.31445312,\n        -0.17675781,\n        -0.66015625,\n        0.25585938,\n        -0.51171875,\n        0.075683594,\n        0.20214844,\n        -0.36914062,\n        -0.12060547,\n        0.265625,\n        0.35742188,\n        -0.36523438,\n        0.6796875,\n        -0.45898438,\n        -0.62109375,\n        0.22753906,\n        0.5078125,\n        -0.03881836,\n        -0.18945312,\n        0.42578125,\n        0.019165039,\n        -0.38476562,\n        -0.20898438,\n        -0.13964844,\n        0.37890625,\n        0.0073242188,\n        0.22460938,\n        -0.08886719,\n        0.12792969,\n        -0.024658203,\n        -0.2890625,\n        0.49023438,\n        -0.24121094,\n        -0.3359375,\n        -0.18847656,\n        -0.25585938,\n        -0.07128906,\n        0.27148438,\n        0.27148438,\n        -0.32421875,\n        -0.4140625,\n        -0.20898438,\n        -0.7109375,\n        0.8515625,\n        0.10644531,\n        0.34179688,\n        -0.4921875,\n        0.26171875,\n        0.18359375,\n        0.33203125,\n        0.07910156,\n        -0.19140625,\n        -0.22851562,\n        0.03112793,\n        0.114746094,\n        -0.2890625,\n        0.4140625,\n        -0.10107422,\n        -0.13476562,\n        0.041748047,\n        -0.19238281,\n        0.11816406,\n        -0.12988281,\n        -0.14550781,\n        -0.07421875,\n        0.083984375,\n        0.10986328,\n        0.08251953,\n        0.51171875,\n        -0.32226562,\n        0.111816406,\n        -0.1328125,\n        0.46289062,\n        -0.39453125,\n        0.26171875,\n        -0.37890625,\n        0.36132812,\n        0.10546875,\n        -0.3046875,\n        0.64453125,\n        0.26757812,\n        0.33203125,\n        -0.39453125,\n        -0.064453125,\n        -0.05078125,\n        0.2421875,\n        0.43359375,\n        0.23925781,\n        -0.921875,\n        0.11767578,\n        -0.140625,\n        -0.11035156,\n        -0.21972656,\n        -0.3125,\n        0.037841797,\n        0.18457031,\n        -0.16210938,\n        -0.18164062,\n        -0.18457031,\n        -0.015136719,\n        -0.0034484863,\n        -0.17773438,\n        0.028076172,\n        0.14257812,\n        -0.546875,\n        -0.008483887,\n        0.3125,\n        0.34960938,\n        0.3515625,\n        0.09082031,\n        -0.4140625,\n        -0.46289062,\n        0.19628906,\n        -0.22949219,\n        -0.5078125,\n        -0.38671875,\n        0.14941406,\n        0.29492188,\n        -0.04638672,\n        -0.32226562,\n        -0.5390625,\n        0.234375,\n        -0.051757812,\n        -0.01171875,\n        -0.06298828,\n        -0.46484375,\n        0.14355469,\n        0.30664062,\n        -0.6484375,\n        0.62109375,\n        -0.24902344,\n        -0.609375,\n        0.48242188,\n        0.007385254,\n        -0.35351562,\n        0.19140625,\n        0.024169922,\n        -0.36914062,\n        -0.58984375,\n        -0.22167969,\n        -0.4140625,\n        -0.34179688,\n        0.25390625,\n        -0.011962891,\n        0.19238281,\n        -0.40625,\n        -0.25,\n        0.40820312,\n        -0.0041503906,\n        0.13769531,\n        0.21191406,\n        0.19042969,\n        -0.19433594,\n        -0.265625,\n        0.0036621094,\n        -0.390625,\n        0.3515625,\n        0.38867188,\n        0.46484375,\n        0.10888672,\n        -0.46875,\n        -0.020141602,\n        -0.43945312,\n        -0.20214844,\n        -0.765625,\n        -0.057128906,\n        0.057861328,\n        -0.41015625,\n        -0.33984375,\n        0.030029297,\n        -0.1484375,\n        0.16894531,\n        -0.25,\n        -0.076171875,\n        0.22949219,\n        -0.27539062,\n        -0.40625,\n        -0.012268066,\n        -0.5390625,\n        0.16699219,\n        -0.34570312,\n        -0.20996094,\n        -1.0625,\n        -0.5625,\n        -0.036865234,\n        0.15917969,\n        -0.33984375,\n        0.040771484,\n        -0.61328125,\n        -0.3203125,\n        0.14648438,\n        0.29101562,\n        0.001876831,\n        0.013671875,\n        0.4375,\n        -0.19335938,\n        -0.3125,\n        0.55859375,\n        -0.24121094,\n        0.07080078,\n        -0.04248047,\n        0.013061523,\n        0.056640625,\n        0.47265625,\n        -0.44921875,\n        0.328125,\n        -0.24316406,\n        -0.111816406,\n        -0.30859375,\n        -0.8359375,\n        0.3359375,\n        -0.109375,\n        -0.22460938,\n        0.29492188,\n        0.546875,\n        -0.07128906,\n        -0.37695312,\n        -0.5078125,\n        0.49023438,\n        -0.17285156,\n        -0.055908203,\n        0.5234375,\n        0.053955078,\n        -0.3671875,\n        0.20703125,\n        -0.31054688,\n        0.24121094,\n        0.106933594,\n        0.24511719,\n        -0.30664062,\n        0.11230469,\n        0.15136719,\n        0.29296875,\n        -0.33984375,\n        -0.107421875,\n        -0.79296875,\n        -0.22558594,\n        0.22167969,\n        -0.15429688,\n        0.0703125,\n        -0.13867188,\n        0.03955078,\n        0.60546875,\n        -0.15625,\n        0.19726562,\n        0.59765625,\n        -0.42773438,\n        0.38085938,\n        0.41210938,\n        0.484375,\n        -0.11767578,\n        -0.453125,\n        -0.0040283203,\n        0.16503906,\n        0.25,\n        0.008483887,\n        0.34375,\n        0.40820312,\n        0.16992188,\n        -0.060546875,\n        0.84375,\n        -0.203125,\n        0.026489258,\n        -0.328125,\n        -0.46484375,\n        -1.0078125,\n        0.061523438,\n        0.11230469,\n        0.3515625,\n        0.30664062,\n        0.024780273,\n        -0.35351562,\n        0.055908203,\n        0.26367188,\n        0.55859375,\n        0.05517578,\n        -0.75,\n        0.013671875,\n        0.12988281,\n        0.36523438,\n        1.078125,\n        -0.46875,\n        -0.54296875,\n        0.08886719,\n        -0.55078125,\n        -0.35351562,\n        -0.17675781,\n        -0.15429688,\n        -0.375,\n        0.61328125,\n        0.40234375,\n        0.10546875,\n        -0.21386719,\n        0.05517578,\n        -0.40625,\n        -0.3359375,\n        -0.44140625,\n        -0.37890625,\n        0.26953125,\n        0.29882812,\n        -0.24609375,\n        -0.37109375,\n        0.24121094,\n        0.036865234,\n        0.55078125,\n        0.35742188,\n        0.24414062,\n        -0.104003906,\n        0.07861328,\n        0.39648438,\n        -0.018310547,\n        -0.111816406,\n        0.07421875,\n        0.080078125,\n        0.54296875,\n        -0.030517578,\n        0.20898438,\n        0.35546875,\n        0.055908203,\n        -0.30273438,\n        0.39648438,\n        0.4609375,\n        -0.037841797,\n        0.36914062,\n        0.037841797,\n        0.25390625,\n        -0.043701172,\n        0.31835938,\n        0.265625,\n        -0.33007812,\n        0.24511719,\n        0.16699219,\n        0.64453125,\n        0.03125,\n        0.14550781,\n        1.046875,\n        0.18652344,\n        -0.033935547,\n        0.28710938,\n        -0.140625,\n        0.24804688,\n        0.15234375,\n        0.5078125,\n        -0.1484375,\n        0.22070312,\n        0.32226562,\n        -0.10986328,\n        -0.27148438,\n        -0.05859375,\n        -0.46875,\n        -0.15234375,\n        0.045898438,\n        0.7421875,\n        0.32421875,\n        0.1640625,\n        -0.055908203,\n        -0.17675781,\n        0.060546875,\n        -0.059326172,\n        0.14160156,\n        -0.484375,\n        0.08544922,\n        -0.16699219,\n        0.12988281,\n        -0.2890625,\n        -0.17285156,\n        0.35546875,\n        -0.07763672,\n        -0.0119018555,\n        0.03857422,\n        -0.15039062,\n        0.58984375,\n        -0.07080078,\n        -0.03149414,\n        0.73046875,\n        -0.26367188,\n        0.11279297,\n        0.0859375,\n        0.091308594,\n        0.05078125,\n        -0.057128906,\n        -0.10644531,\n        -0.30859375,\n        0.012268066,\n        0.13867188,\n        -0.24511719,\n        -0.12451172,\n        0.2265625,\n        0.01965332,\n        -0.06933594,\n        -0.49414062,\n        -0.45898438,\n        0.084472656,\n        -0.10253906,\n        -0.33398438,\n        -0.0000667572,\n        0.30859375,\n        0.22949219,\n        0.33789062,\n        -0.13085938,\n        0.2734375,\n        -0.48828125,\n        0.47460938,\n        -0.0138549805,\n        -0.546875,\n        -0.19433594,\n        -0.66796875,\n        0.030883789,\n        -0.17871094,\n        -0.34375,\n        -0.22265625,\n        -0.21386719,\n        0.38085938,\n        0.75,\n        -0.40039062,\n        0.005859375,\n        0.26171875,\n        0.55078125,\n        0.11376953,\n        -0.28125,\n        0.14257812,\n        0.040527344,\n        -0.11767578,\n        0.13867188,\n        -0.055908203,\n        -0.75390625,\n        -0.26953125,\n        0.265625,\n        -0.6171875,\n        0.083984375,\n        -0.037353516,\n        0.20019531,\n        0.359375,\n        0.22949219,\n        0.4453125,\n        0.23535156,\n        -0.012207031,\n        0.49414062,\n        0.5,\n        0.059570312,\n        0.390625,\n        0.4609375,\n        -0.12011719,\n        -0.13769531,\n        -0.20898438,\n        -0.083496094,\n        0.6328125,\n        -0.21875,\n        -0.006225586,\n        0.22949219,\n        0.21679688,\n        -0.1953125,\n        0.23242188,\n        -0.49804688,\n        -0.15625,\n        0.40429688,\n        0.13867188,\n        -0.068847656,\n        0.17285156,\n        -0.046142578,\n        0.19628906,\n        -0.32617188,\n        0.28710938,\n        -0.047607422,\n        -0.042236328,\n        -0.20019531,\n        0.28125,\n        -0.26367188,\n        -0.071777344,\n        -0.106933594,\n        -0.51953125,\n        -0.296875,\n        0.0625,\n        0.52734375,\n        -0.030761719,\n        -0.035888672,\n        0.026855469,\n        -0.06933594,\n        0.3125,\n        -0.021972656,\n        -0.22460938,\n        0.20703125,\n        -0.07714844,\n        0.23828125,\n        -0.27734375,\n        0.20605469,\n        0.1484375,\n        -0.05053711,\n        -0.69921875,\n        0.051513672,\n        -0.34179688,\n        -0.58203125,\n        0.51171875,\n        0.118652344,\n        -0.114746094,\n        -0.10058594,\n        0.08203125,\n        -0.2734375,\n        0.47265625,\n        0.123046875,\n        0.0015258789,\n        0.31640625,\n        -0.23925781,\n        -0.3203125,\n        0.118652344,\n        -0.16796875,\n        0.16210938,\n        0.14453125,\n        0.34179688,\n        -0.5859375,\n        0.4140625,\n        -0.26367188,\n        -0.044189453,\n        -0.55078125,\n        -0.32226562,\n        -0.12597656,\n        -0.028198242,\n        -0.25390625,\n        -0.296875,\n        -0.59375,\n        -0.29882812,\n        -0.31640625,\n        0.23046875,\n        0.34570312,\n        -0.24316406,\n        -0.68359375,\n        -0.6796875,\n        -0.23730469,\n        -0.6171875,\n        0.07519531,\n        0.15625,\n        -0.05053711,\n        0.30859375,\n        -0.35742188,\n        -0.26757812,\n        -0.35351562,\n        0.30859375,\n        0.11035156,\n        0.35351562,\n        -0.5625,\n        -0.12451172,\n        0.08886719,\n        -0.25390625,\n        -0.38085938,\n        0.038330078,\n        -0.33984375,\n        -0.17089844,\n        0.0026550293,\n        0.34570312,\n        0.31054688,\n        -0.064453125,\n        -0.122558594,\n        -0.16308594,\n        0.28320312,\n        0.049560547,\n        -0.9140625,\n        -0.25195312,\n        -0.5703125,\n        0.50390625,\n        -0.056640625,\n        0.16601562,\n        0.109375,\n        0.08984375,\n        0.28710938,\n        -0.18554688,\n        -0.11279297,\n        0.16015625,\n        0.19042969,\n        -0.017700195,\n        0.072265625,\n        0.17089844,\n        0.65234375,\n        0.19238281,\n        -0.22167969,\n        0.76171875,\n        -0.59765625,\n        0.3046875,\n        0.067871094,\n        0.44335938,\n        0.0072021484,\n        0.38671875,\n        -0.53125,\n        -0.1484375,\n        -0.19726562,\n        -0.20800781,\n        0.020385742,\n        -0.21875,\n        -0.118652344,\n        0.15527344,\n        -0.578125,\n        -0.021972656,\n        -0.12695312,\n        0.27734375,\n        0.59375,\n        -0.48632812,\n        -0.3203125,\n        -0.055419922,\n        0.20117188,\n        0.27734375,\n        0.05053711,\n        0.51171875,\n        0.24707031,\n        0.22167969,\n        0.63671875,\n        -0.23828125,\n        -0.36914062,\n        0.39257812,\n        -0.90234375,\n        -0.32226562,\n        -0.1484375,\n        -0.051513672,\n        -0.13378906,\n        -0.16210938,\n        0.6328125,\n        -0.21386719,\n        0.036621094,\n        0.09667969,\n        -0.25585938,\n        -0.7265625,\n        -0.24511719,\n        -0.29101562,\n        0.28515625,\n        -0.084472656,\n        0.060546875,\n        0.18359375,\n        0.10449219,\n        0.15722656,\n        0.55859375,\n        0.60546875,\n        -0.011169434,\n        0.28710938,\n        -0.23535156,\n        -0.05444336,\n        -0.3046875,\n        0.18457031,\n        -0.103515625,\n        -0.1953125,\n        -0.4296875,\n        -0.17773438,\n        0.22558594,\n        0.25,\n        -0.067871094,\n        0.00025367737,\n        0.39257812,\n        -0.25390625,\n        -0.11035156,\n        -0.041748047,\n        -0.6953125,\n        -0.21875,\n        -0.265625,\n        -0.17382812,\n        -0.359375,\n        -0.22070312,\n        0.18359375,\n        -0.03881836,\n        0.36523438,\n        -0.39257812,\n        0.095214844,\n        -0.92578125,\n        -0.18359375,\n        0.44921875,\n        -0.28710938,\n        -0.13769531,\n        0.018920898,\n        0.23242188,\n        -0.17480469,\n        -0.43164062,\n        0.34375,\n        -0.014831543,\n        -0.026123047,\n        0.38476562,\n        0.5703125,\n        -0.20019531,\n        -0.024291992,\n        0.125,\n        0.10595703,\n        -0.16601562,\n        0.44140625,\n        -0.7109375,\n        -0.55078125,\n        -0.55859375,\n        0.17089844,\n        -0.44726562,\n        0.18554688,\n        0.45117188,\n        0.07324219,\n        0.10986328,\n        -0.46484375,\n        0.26757812,\n        -0.14550781,\n        0.030029297,\n        0.35351562,\n        -0.23828125,\n        0.030517578,\n        0.8984375,\n        0.0134887695,\n        0.76171875,\n        -0.55078125,\n        -0.03125,\n        0.119628906,\n        -0.34375,\n        -0.06347656,\n        -0.83203125,\n        0.3046875,\n        0.16015625,\n        -0.37304688,\n        -0.07714844,\n        0.04663086,\n        0.13671875,\n        -0.10058594,\n        0.053222656,\n        -0.390625,\n        -0.26757812,\n        0.1953125,\n        0.35546875,\n        0.24023438,\n        -0.109375,\n        -0.6328125,\n        0.17578125,\n        0.23339844,\n        0.37695312,\n        -0.12695312,\n        0.50390625,\n        -0.18847656,\n        0.05444336,\n        -0.32617188,\n        -0.42578125,\n        0.37695312,\n        -0.14355469,\n        -0.0025177002,\n        -0.19335938,\n        -0.5234375,\n        0.43359375,\n        -0.19921875,\n        -0.49414062,\n        0.18945312,\n        0.05517578,\n        0.390625,\n        0.48828125,\n        0.021972656,\n        -0.296875,\n        -0.66015625,\n        0.34765625,\n        -0.03540039,\n        0.578125,\n        0.29101562,\n        -0.20019531,\n        0.123046875,\n        -0.14648438,\n        0.23046875,\n        0.6796875,\n        0.072265625,\n        -0.7890625,\n        0.41992188,\n        -0.044677734,\n        0.71484375,\n        0.3046875,\n        -0.18164062,\n        -0.095214844,\n        -0.29296875,\n        0.40039062,\n        -0.73046875,\n        -0.23242188,\n        0.0033874512,\n        0.07910156,\n        -0.22265625,\n        -0.484375,\n        -0.001373291,\n        0.49023438,\n        0.119140625,\n        0.58984375,\n        0.34960938,\n        -0.2578125,\n        -0.19140625,\n        0.5625,\n        -0.29492188,\n        0.23730469,\n        0.036376953,\n        0.34570312,\n        -0.17578125,\n        0.26757812,\n        -0.036621094,\n        -0.7890625,\n        0.03491211,\n        0.123535156,\n        -0.5859375,\n        0.3515625,\n        0.14257812,\n        0.030883789,\n        0.34960938,\n        0.1953125,\n        -0.0390625,\n        0.26953125,\n        0.16894531,\n        -0.14257812,\n        -0.18457031,\n        0.12402344,\n        0.15039062,\n        -0.37890625,\n        0.31640625,\n        -0.017822266,\n        -0.018554688,\n        -0.203125,\n        -0.90625,\n        0.69140625,\n        -0.703125,\n        0.2265625,\n        -0.19921875,\n        0.46484375,\n        -0.10205078,\n        -0.041259766,\n        -0.578125,\n        -0.01574707,\n        -0.12988281,\n        -0.16113281,\n        -0.07861328,\n        -0.099121094,\n        0.11767578,\n        -0.063964844,\n        0.29296875,\n        0.22558594,\n        -0.60546875,\n        -0.017333984,\n        0.43359375,\n        0.103515625,\n        0.24707031,\n        0.088378906,\n        -0.61328125,\n        0.16699219,\n        -0.3828125,\n        0.1875,\n        -0.20507812,\n        -0.57421875,\n        0.19042969,\n        0.32226562,\n        -0.51953125,\n        0.20507812,\n        0.02319336,\n        0.30664062,\n        -0.17773438,\n        0.33398438,\n        0.15820312,\n        -0.24511719,\n        0.3046875,\n        0.23535156,\n        -0.17773438,\n        0.015014648,\n        0.076171875,\n        -0.25195312,\n        0.08691406,\n        -0.06738281,\n        0.49609375,\n        0.34179688,\n        -0.2578125,\n        -0.095703125,\n        -0.20214844,\n        0.07324219,\n        -0.02709961,\n        -0.16503906,\n        -0.16210938,\n        -0.80078125,\n        -0.31445312,\n        0.059326172,\n        0.1953125,\n        -0.20703125,\n        -0.22753906,\n        0.625,\n        0.27929688,\n        0.16699219,\n        0.11669922,\n        0.26171875,\n        -0.095214844,\n        0.13183594,\n        0.21972656,\n        0.015625,\n        0.59375,\n        0.40234375,\n        0.55078125,\n        -0.11669922,\n        0.13867188,\n        -0.23339844,\n        -0.029296875,\n        0.5078125,\n        -0.12695312,\n        -0.34179688,\n        0.06640625,\n        -0.095214844,\n        -0.23632812,\n        0.43945312,\n        -0.1796875,\n        -0.47851562,\n        0.2109375,\n        0.64453125,\n        -0.5234375,\n        0.19335938,\n        -0.28125,\n        -0.016235352,\n        -0.2734375,\n        0.06298828,\n        0.36132812,\n        -0.041015625,\n        -0.06933594,\n        0.38085938,\n        0.26367188,\n        -0.20605469,\n        -0.21484375,\n        0.29296875,\n        -0.09472656,\n        -0.13769531,\n        -0.071777344,\n        0.0028381348,\n        -0.20507812,\n        0.16796875,\n        -0.19921875,\n        -0.125,\n        -0.50390625,\n        -0.14648438,\n        0.43164062,\n        0.21875,\n        -0.092285156,\n        0.36328125,\n        0.26171875,\n        0.51953125,\n        0.03466797,\n        -0.018798828,\n        0.38867188,\n        -0.20410156,\n        -0.45117188,\n        -0.2109375,\n        0.38476562,\n        0.21289062,\n        0.54296875,\n        -0.115234375,\n        0.1484375,\n        0.18164062,\n        -0.46484375,\n        0.08203125,\n        0.75,\n        0.23828125,\n        -0.12451172,\n        -0.21191406,\n        0.25,\n        0.26171875,\n        0.05493164,\n        0.26171875,\n        0.48828125,\n        0.37890625,\n        0.14648438,\n        0.62890625,\n        0.09765625,\n        0.52734375,\n        0.38671875,\n        -0.49023438,\n        0.24511719,\n        0.45703125,\n        -0.123046875,\n        0.22265625,\n        0.041748047,\n        0.10839844,\n        0.41992188,\n        -0.19238281,\n        0.4765625,\n        -0.59765625,\n        -0.06542969,\n        -0.13378906,\n        0.28515625,\n        0.042236328,\n        0.26171875,\n        -0.010986328,\n        -0.61328125,\n        -0.099121094,\n        -0.03881836,\n        0.41210938,\n        -0.34570312,\n        0.10888672,\n        -0.01940918,\n        0.28515625,\n        0.25195312,\n        0.40429688,\n        0.51953125,\n        -0.60546875,\n        -0.3203125,\n        0.07763672,\n        -0.34375,\n        -0.31640625,\n        0.24414062,\n        0.30859375,\n        0.22851562,\n        0.27539062,\n        -0.45703125,\n        -0.2734375,\n        -0.16699219,\n        -0.08886719,\n        -0.21289062,\n        -0.08886719,\n        -0.30078125,\n        -0.296875,\n        0.17773438,\n        0.65234375,\n        0.73046875,\n        0.40625,\n        -0.25585938,\n        -0.40625,\n        0.45898438,\n        0.875,\n        -0.23828125,\n        0.099609375,\n        -0.55078125,\n        0.10644531,\n        0.28320312,\n        -0.15429688,\n        -0.03930664,\n        -0.29101562,\n        -0.171875,\n        0.34960938,\n        0.06933594,\n        0.15039062,\n        -0.26757812,\n        -0.25585938,\n        -0.09472656,\n        -0.15332031,\n        -0.27929688,\n        0.16015625,\n        0.140625,\n        0.51953125,\n        0.091796875,\n        -0.45703125,\n        0.18261719,\n        -0.21386719,\n        -0.068359375,\n        -0.5390625,\n        0.53125,\n        0.390625,\n        -0.052734375,\n        0.51171875,\n        -0.17675781,\n        0.16113281,\n        -0.203125,\n        0.109375,\n        0.33007812,\n        -0.16894531,\n        0.3203125,\n        -0.21875,\n        0.09667969,\n        0.25390625,\n        -0.578125,\n        -0.26171875,\n        -0.28710938,\n        -0.41796875,\n        0.16503906,\n        -0.16992188,\n        0.43164062,\n        -0.375,\n        0.7578125,\n        0.17773438,\n        0.17480469,\n        -0.25976562,\n        0.140625,\n        0.022827148,\n        -0.22753906,\n        0.66796875,\n        -0.3359375,\n        -0.44921875,\n        0.27734375,\n        0.19921875,\n        0.3203125,\n        -0.051513672,\n        -0.025878906,\n        -0.27734375,\n        -0.140625,\n        -0.18457031,\n        0.2265625,\n        0.13867188,\n        -0.24902344,\n        -0.032714844,\n        -0.21289062,\n        -0.5625,\n        0.25976562,\n        -0.10058594,\n        -0.7421875,\n        -0.10888672,\n        -0.0029449463,\n        -0.4375,\n        0.29296875,\n        -0.14550781,\n        -0.05834961,\n        -0.57421875,\n        -0.017456055,\n        -0.30273438,\n        0.33398438,\n        0.15332031,\n        0.4609375,\n        -0.546875,\n        0.12890625,\n        0.7734375,\n        0.052246094,\n        0.390625,\n        0.02331543,\n        -0.59375,\n        -0.095214844,\n        -0.05102539,\n        0.13085938,\n        0.13183594,\n        0.078125,\n        0.20214844,\n        0.23632812,\n        -0.90625,\n        -0.0006980896,\n        -0.25195312,\n        -0.09423828,\n        0.32226562,\n        -0.37890625,\n        0.08251953,\n        -0.096191406,\n        0.26953125,\n        -0.012878418,\n        -0.16699219,\n        0.40429688,\n        0.10253906,\n        0.39453125,\n        0.14453125,\n        -0.8125,\n        0.06640625,\n        -0.35742188,\n        0.578125,\n        -0.080566406,\n        -0.52734375,\n        0.10253906,\n        0.22949219,\n        -0.38671875,\n        -0.30078125,\n        0.55859375,\n        0.06689453,\n        -0.59375,\n        0.17578125,\n        -0.29101562,\n        -0.14355469,\n        0.15332031,\n        -0.13378906,\n        -0.43945312,\n        0.40429688,\n        -0.171875,\n        0.068359375,\n        -0.12890625,\n        -0.05810547,\n        -0.18945312,\n        0.080078125,\n        -0.6171875,\n        -0.0049743652,\n        0.07421875,\n        0.5546875,\n        0.15234375,\n        -0.13769531,\n        0.36523438,\n        -0.421875,\n        0.16699219,\n        -0.29296875,\n        0.09716797,\n        -0.22070312,\n        0.16992188,\n        0.15625,\n        0.040039062,\n        -0.092285156,\n        0.33203125,\n        -0.42773438,\n        0.33398438,\n        -0.088378906,\n        0.08886719,\n        0.8203125,\n        0.12890625,\n        -0.24707031,\n        0.24316406,\n        0.15625,\n        0.47070312,\n        0.02734375,\n        0.35546875,\n        -0.328125,\n        -0.17578125,\n        0.115234375,\n        0.22949219,\n        -0.009521484,\n        -0.40820312,\n        -0.19140625,\n        -0.43164062,\n        0.30664062,\n        0.020874023,\n        0.033935547,\n        0.12988281,\n        0.004211426,\n        -0.37890625,\n        -0.24804688,\n        0.14941406,\n        -0.67578125,\n        0.81640625,\n        0.3515625,\n        -0.2109375,\n        -0.21875,\n        0.26171875,\n        0.13671875,\n        0.328125,\n        0.22070312,\n        0.36328125,\n        0.33398438,\n        0.73046875,\n        0.07714844,\n        -0.20019531,\n        0.20996094,\n        -0.5234375,\n        0.28320312,\n        0.25195312,\n        -0.10205078,\n        0.06542969,\n        0.32226562,\n        0.296875,\n        -0.22460938,\n        0.07324219,\n        -0.18847656,\n        0.59765625,\n        -0.27929688,\n        0.095214844,\n        -0.27929688,\n        0.37890625,\n        -0.091796875,\n        -0.66796875,\n        -0.12890625,\n        -0.6640625,\n        0.029296875,\n        -0.08984375,\n        -0.16210938,\n        0.36523438,\n        -0.19824219,\n        -0.29882812,\n        -0.19433594,\n        0.27929688,\n        0.44726562,\n        0.234375,\n        -0.42773438,\n        -0.23339844,\n        0.17578125,\n        0.16601562,\n        0.13769531,\n        -0.15917969,\n        -0.28515625,\n        0.33007812,\n        0.12988281,\n        -0.09423828,\n        -0.033691406,\n        0.096191406,\n        -0.19628906,\n        0.1796875,\n        -0.44921875,\n        -0.70703125,\n        -0.12158203,\n        0.10498047,\n        0.18359375,\n        -0.50390625,\n        -0.007446289,\n        0.30664062,\n        -0.37109375,\n        0.49609375,\n        -0.10644531,\n        -0.075683594,\n        0.640625,\n        -0.37890625,\n        -0.19824219,\n        0.19726562,\n        0.45703125,\n        0.034423828,\n        0.14941406,\n        0.28710938,\n        -0.08935547,\n        -0.33789062,\n        -0.23535156,\n        0.20410156,\n        0.013977051,\n        0.14257812,\n        -0.32617188,\n        0.31835938,\n        0.16601562,\n        -0.12792969,\n        0.36328125,\n        0.33398438,\n        -0.41992188,\n        -0.052001953,\n        -0.24804688,\n        -0.17480469,\n        0.29882812,\n        -0.31445312,\n        -0.25,\n        0.61328125,\n        -0.14648438,\n        0.328125,\n        0.40820312,\n        0.08496094,\n        -0.1484375,\n        -0.375,\n        0.27148438,\n        0.26757812,\n        -0.4921875,\n        -0.48046875,\n        0.16503906,\n        -0.05859375,\n        -0.6953125,\n        -0.17578125,\n        0.4609375,\n        0.22460938,\n        -0.16308594,\n        -0.06591797,\n        -0.48828125,\n        -0.35546875,\n        -0.27929688,\n        0.4140625,\n        0.421875,\n        0.18945312,\n        0.38671875,\n        0.043701172,\n        -0.23535156,\n        0.078125,\n        -0.022949219,\n        -0.003189087,\n        0.58203125,\n        -0.24316406,\n        -0.49804688,\n        -0.546875,\n        0.18847656,\n        0.04663086,\n        -0.6484375,\n        -0.13085938,\n        0.01361084,\n        -0.44921875,\n        0.44921875,\n        -0.17578125,\n        0.14746094,\n        -0.16308594,\n        -0.29296875,\n        0.07519531,\n        0.5625,\n        -0.51953125,\n        0.20800781,\n        -0.14941406,\n        -0.03125,\n        0.421875,\n        0.21679688,\n        -0.06640625,\n        0.6328125,\n        0.65625,\n        0.32226562,\n        0.104003906,\n        -0.24414062,\n        0.13378906,\n        -0.40234375,\n        0.011169434,\n        -0.38476562,\n        0.043701172,\n        0.044921875,\n        0.10107422,\n        0.08300781,\n        0.38671875,\n        0.24902344,\n        -0.0625,\n        0.5546875,\n        -0.09033203,\n        0.41210938,\n        -0.06933594,\n        -0.1484375,\n        0.008544922,\n        -0.2578125,\n        0.040771484,\n        -0.21875,\n        0.29492188,\n        -0.23242188,\n        0.20703125,\n        -0.27148438,\n        -0.18261719,\n        -0.080566406,\n        0.12988281,\n        0.24511719,\n        0.30273438,\n        -0.23535156,\n        -0.08886719,\n        -0.028320312,\n        -0.796875,\n        0.2421875,\n        0.06298828,\n        -0.125,\n        -0.07470703,\n        -0.15625,\n        -0.578125,\n        -0.22558594,\n        0.10644531,\n        0.17578125,\n        -0.13964844,\n        0.31640625,\n        -0.29296875,\n        -0.31445312,\n        0.421875,\n        0.018798828,\n        -0.012634277,\n        -0.33789062,\n        0.020507812,\n        -0.24023438,\n        0.20898438,\n        -0.328125,\n        -0.48242188,\n        -0.453125,\n        -0.296875,\n        -0.0025787354,\n        0.068359375,\n        -0.24316406,\n        0.54296875,\n        0.021240234,\n        -0.875,\n        0.014526367,\n        -0.15429688,\n        0.26367188,\n        -0.36914062,\n        0.03857422,\n        0.15136719,\n        0.33789062,\n        -0.22753906,\n        -0.33984375,\n        -0.043701172,\n        -0.33398438,\n        -0.004425049,\n        0.20605469,\n        -0.039794922,\n        -0.22265625,\n        0.46679688,\n        -0.41796875,\n        -0.18945312,\n        0.17285156,\n        -0.13183594,\n        -0.44726562,\n        -0.55078125,\n        0.24121094,\n        0.033691406,\n        -0.22363281,\n        0.234375,\n        0.29882812,\n        0.08691406,\n        0.33789062,\n        -0.30273438,\n        -0.12060547,\n        0.33203125,\n        0.31054688,\n        0.10546875,\n        -0.50390625,\n        0.24316406,\n        -0.12207031,\n        -0.609375,\n        -0.53125,\n        -0.3984375,\n        -0.6796875,\n        0.15722656,\n        0.051757812,\n        -0.31640625,\n        0.77734375,\n        0.62109375,\n        0.013793945,\n        -0.099121094,\n        -0.42578125,\n        -0.56640625,\n        0.390625,\n        0.37109375,\n        -0.23144531,\n        -0.734375,\n        0.14550781,\n        -0.07519531,\n        0.45898438,\n        0.45507812,\n        -0.064453125,\n        -0.09667969,\n        -0.41796875,\n        0.017578125,\n        -0.23242188,\n        -0.19140625,\n        0.41796875,\n        -0.32617188,\n        -0.16699219,\n        0.01586914,\n        0.018554688,\n        -0.58984375,\n        -0.111328125,\n        0.40234375,\n        -0.01977539,\n        -0.59765625,\n        -0.3359375,\n        0.67578125,\n        -0.20703125,\n        0.140625,\n        -0.016601562,\n        -0.012145996,\n        -0.36328125,\n        -0.052734375,\n        0.515625,\n        -0.06982422,\n        -0.011352539,\n        -0.18261719,\n        0.359375,\n        -0.021728516,\n        -0.07910156,\n        0.024902344,\n        0.14550781,\n        -0.12060547,\n        -0.10205078,\n        0.10205078,\n        -0.032470703,\n        0.125,\n        -0.35742188,\n        0.104003906,\n        0.421875,\n        0.24511719,\n        -0.23242188,\n        -0.140625,\n        0.020385742,\n        0.25195312,\n        0.1484375,\n        -0.5078125,\n        -0.020996094,\n        -0.42382812,\n        -0.12695312,\n        -0.23730469,\n        0.19921875,\n        0.1796875,\n        -0.17285156,\n        0.21386719,\n        -0.012817383,\n        0.50390625,\n        0.0072021484,\n        -0.38671875,\n        0.18945312,\n        0.13671875,\n        0.119140625,\n        -0.62890625,\n        -0.79296875,\n        0.75390625,\n        -1.0390625,\n        0.08496094,\n        -0.024536133,\n        0.08544922,\n        -0.008666992,\n        0.8046875,\n        -0.31640625,\n        0.41992188,\n        0.2421875,\n        -0.012023926,\n        -0.3203125,\n        0.040283203,\n        0.16796875,\n        -0.47851562,\n        -0.20214844,\n        -0.65234375,\n        -0.21777344,\n        0.15917969,\n        0.50390625,\n        0.41796875,\n        0.79296875,\n        -0.18457031,\n        -0.111328125,\n        -0.16308594,\n        0.33789062,\n        0.111816406,\n        -0.796875,\n        -0.110839844,\n        0.15332031,\n        -0.33007812,\n        -0.17480469,\n        0.11816406,\n        0.111816406,\n        -0.33007812,\n        0.80078125,\n        -0.48828125,\n        -0.43359375,\n        -0.003829956,\n        -0.14160156,\n        -0.36914062,\n        -0.055908203,\n        0.091796875,\n        -0.203125,\n        0.2265625,\n        0.5078125,\n        0.3203125,\n        0.44140625,\n        -0.00088500977,\n        -0.039794922,\n        0.765625,\n        0.2734375,\n        -1.015625,\n        0.10498047,\n        0.35742188,\n        -0.31054688,\n        0.029418945,\n        0.39453125,\n        0.047607422,\n        0.2890625,\n        0.18261719,\n        0.13867188,\n        0.41601562,\n        -0.29882812,\n        -0.66015625,\n        -0.34179688,\n        -0.2421875,\n        -0.44335938,\n        -0.484375,\n        -0.4140625,\n        -0.453125,\n        -0.045166016,\n        0.26367188,\n        0.08544922,\n        0.049316406,\n        0.91796875,\n        0.49023438,\n        -0.11376953,\n        0.890625,\n        0.48242188,\n        0.22949219,\n        0.19042969,\n        -0.41992188,\n        -0.001663208,\n        0.087890625,\n        -0.16113281,\n        0.071777344,\n        -0.20898438,\n        0.35546875,\n        0.053222656,\n        -0.13769531,\n        -0.23828125,\n        -0.46679688,\n        0.375,\n        0.03881836,\n        -0.64453125,\n        0.25195312,\n        0.31640625,\n        -0.030395508,\n        0.6875,\n        -0.12402344,\n        0.30078125,\n        0.009216309,\n        -0.12890625,\n        -0.05859375,\n        0.421875,\n        -0.17480469,\n        -0.48828125,\n        0.44726562,\n        -0.69140625,\n        0.115722656,\n        0.04248047,\n        -0.171875,\n        0.390625,\n        0.43554688,\n        -0.092285156,\n        -0.15625,\n        0.734375,\n        0.13378906,\n        0.13574219,\n        -0.0076904297,\n        0.13085938,\n        -0.6796875,\n        -0.1796875,\n        0.578125,\n        -0.5625,\n        0.6328125,\n        0.515625,\n        0.55078125,\n        0.19433594,\n        -0.25,\n        -0.29296875,\n        0.18164062,\n        0.100097656,\n        -0.64453125,\n        0.78515625,\n        0.055419922,\n        0.083496094,\n        -0.28320312,\n        0.12792969,\n        -0.28515625,\n        0.12988281,\n        -0.203125,\n        0.07324219,\n        -0.13378906,\n        0.11669922,\n        0.30078125,\n        -0.100097656,\n        -0.5859375,\n        0.26171875,\n        0.36328125,\n        0.515625,\n        0.5234375,\n        -0.765625,\n        0.4296875,\n        -0.09033203,\n        -0.19140625,\n        0.07421875,\n        0.03491211,\n        0.014831543,\n        0.0072631836,\n        0.6328125,\n        0.46484375,\n        -0.203125,\n        0.703125,\n        -0.24316406,\n        0.107421875,\n        -0.38867188,\n        0.28125,\n        -0.18164062,\n        0.018798828,\n        0.24609375,\n        -0.12890625,\n        -0.026367188,\n        0.2109375,\n        0.114746094,\n        -0.032958984,\n        0.32226562,\n        0.03173828,\n        -0.35351562,\n        0.2578125,\n        -0.15136719,\n        0.12402344,\n        -0.41796875,\n        0.4453125,\n        0.26953125,\n        0.07373047,\n        0.12988281,\n        0.640625,\n        -0.10253906,\n        -0.46875,\n        0.25390625,\n        -0.32226562,\n        -0.48242188,\n        0.008300781,\n        0.34179688,\n        0.65234375,\n        -0.13183594,\n        0.17382812,\n        0.27929688,\n        0.12695312,\n        -0.27148438,\n        -0.46289062,\n        -0.03930664,\n        -0.087890625,\n        0.19042969,\n        -0.21777344,\n        -0.625,\n        0.25195312,\n        -0.012084961,\n        -0.1875,\n        0.34960938,\n        -0.01928711,\n        0.390625,\n        -0.296875,\n        -0.18261719,\n        0.22265625,\n        0.012939453,\n        0.12011719,\n        1.0234375,\n        -0.036865234,\n        -0.31054688,\n        0.18847656,\n        -0.265625,\n        0.43945312,\n        -0.32226562,\n        -0.37304688,\n        -0.033203125,\n        -0.82421875,\n        -0.44140625,\n        0.099121094,\n        -0.09423828,\n        0.20019531,\n        0.37890625,\n        0.026733398,\n        0.3046875,\n        -0.57421875,\n        0.12597656,\n        0.35546875,\n        0.50390625,\n        -0.079589844,\n        0.27539062,\n        -0.15625,\n        -0.42578125,\n        0.005126953,\n        0.0013275146,\n        0.31835938,\n        -0.80078125,\n        0.328125,\n        -0.2421875,\n        0.27148438,\n        -0.05883789,\n        0.55859375,\n        -0.26757812,\n        -0.26171875,\n        -0.019042969,\n        -0.53515625,\n        0.18457031,\n        0.020019531,\n        0.095214844,\n        -0.123535156,\n        -0.07373047,\n        -0.02734375,\n        -0.31835938,\n        -0.022216797,\n        -0.390625,\n        -0.012939453,\n        -0.453125,\n        0.37304688,\n        -0.79296875,\n        -0.35546875,\n        0.099121094,\n        -0.33984375,\n        0.007171631,\n        -0.14648438,\n        -0.37890625,\n        0.09765625,\n        0.34179688,\n        -0.5625,\n        -0.21875,\n        -0.06982422,\n        0.010681152,\n        0.2578125,\n        0.3203125,\n        -0.2890625,\n        0.24414062,\n        -0.4453125,\n        0.21972656,\n        0.043701172,\n        0.26953125,\n        0.28125,\n        0.047851562,\n        0.30273438,\n        -0.29492188,\n        0.47070312,\n        -0.859375,\n        0.022705078,\n        -0.38476562,\n        0.18066406,\n        0.48046875,\n        0.003189087,\n        0.22851562,\n        -0.39453125,\n        -0.021972656,\n        0.05908203,\n        0.21191406,\n        -0.16503906,\n        0.17089844,\n        0.62109375,\n        0.033691406,\n        0.03857422,\n        0.30859375,\n        -0.3046875,\n        0.09082031,\n        -0.58984375,\n        0.640625,\n        -0.09375,\n        -0.037841797,\n        0.20019531,\n        -0.1875,\n        -0.4609375,\n        0.40039062,\n        -0.37109375,\n        0.37890625,\n        -0.18652344,\n        -0.08496094,\n        -0.41601562,\n        0.46679688,\n        -0.31640625,\n        0.061523438,\n        0.3125,\n        0.045166016,\n        0.014831543,\n        -0.017944336,\n        0.06201172,\n        -0.15820312,\n        0.06640625,\n        -0.48242188,\n        -0.12695312,\n        -0.119140625,\n        0.71484375,\n        0.050048828,\n        0.31835938,\n        -0.49023438,\n        0.06933594,\n        0.47460938,\n        0.25195312,\n        -0.107421875,\n        0.1796875,\n        -0.111816406,\n        0.17773438,\n        0.12597656,\n        0.4296875,\n        0.29101562,\n        0.29492188,\n        0.5703125,\n        -0.46289062,\n        -0.17773438,\n        -0.022949219,\n        -0.4140625,\n        -0.25976562,\n        0.62109375,\n        0.47070312,\n        0.084472656,\n        0.2109375,\n        -0.48046875,\n        -0.40039062,\n        -0.30664062,\n        -0.07324219,\n        0.019897461,\n        0.57421875,\n        -0.1953125,\n        -0.578125,\n        0.41601562,\n        0.091308594,\n        -0.30664062,\n        -0.079589844,\n        -0.055908203,\n        -0.08886719,\n        -0.625,\n        -0.103027344,\n        0.39257812,\n        0.23046875,\n        0.052978516,\n        0.5078125,\n        0.22460938,\n        -0.24414062,\n        -0.23144531,\n        0.23925781,\n        -0.21972656,\n        0.0009918213,\n        0.015014648,\n        0.03515625,\n        -0.01574707,\n        -0.12207031,\n        0.044921875,\n        -0.69140625,\n        -0.15234375,\n        -0.18359375,\n        0.026977539,\n        -0.36328125,\n        0.016479492,\n        -0.25585938,\n        0.31054688,\n        0.16992188,\n        -0.5546875,\n        -0.16699219,\n        -0.41796875,\n        -0.2578125,\n        0.296875,\n        -0.34375,\n        0.29296875,\n        0.26757812,\n        0.02368164,\n        0.45507812,\n        0.12988281,\n        -0.25390625,\n        0.8203125,\n        0.15039062,\n        0.10644531,\n        -0.3671875,\n        -0.08886719,\n        0.26367188,\n        -0.66015625,\n        0.32421875,\n        0.033935547,\n        -0.8203125,\n        -0.45898438,\n        0.21679688,\n        -0.2734375,\n        -0.22265625,\n        0.18847656,\n        0.072265625,\n        -0.31445312,\n        -0.328125,\n        -0.24609375,\n        -0.20898438,\n        -0.041015625,\n        -0.15136719,\n        -0.12451172,\n        -0.13769531,\n        -0.25976562,\n        0.31054688,\n        -0.48632812,\n        0.0059509277,\n        -0.19628906,\n        -0.484375,\n        -0.26367188,\n        -0.51171875,\n        0.056396484,\n        0.5546875,\n        -0.38476562,\n        0.06298828,\n        -0.15234375,\n        0.625,\n        -0.28125,\n        -0.36914062,\n        -0.048583984,\n        -0.3203125,\n        -0.43945312,\n        -0.30273438,\n        -0.63671875,\n        -0.703125,\n        0.33398438,\n        0.6796875,\n        -0.65234375,\n        -0.30859375,\n        0.35742188,\n        -0.107421875,\n        -0.106933594,\n        0.30664062,\n        -0.43945312,\n        -0.24707031,\n        0.2265625,\n        -0.115234375,\n        -0.18945312,\n        0.11621094,\n        -0.546875,\n        -0.044677734,\n        -0.15527344,\n        -0.15722656,\n        -0.119628906,\n        -0.3984375,\n        -0.17285156,\n        -0.75,\n        -0.14941406,\n        0.3671875,\n        0.008605957,\n        0.19140625,\n        -0.25390625,\n        -0.043945312,\n        -0.16015625,\n        -0.2578125,\n        -0.23632812,\n        -0.58984375,\n        0.115722656,\n        -0.296875,\n        -0.47460938,\n        -0.390625,\n        0.72265625,\n        0.03955078,\n        0.048339844,\n        -0.18066406,\n        0.026977539,\n        0.06542969,\n        0.4765625,\n        0.39257812,\n        0.018920898,\n        0.23339844,\n        -0.022705078,\n        0.43359375,\n        0.15917969,\n        0.15332031,\n        -0.04345703,\n        0.06347656,\n        -0.19824219,\n        -0.484375,\n        0.35742188,\n        -0.1875,\n        0.21777344,\n        0.025024414,\n        -0.23046875,\n        0.10107422,\n        -0.13964844,\n        -0.19628906,\n        0.39257812,\n        0.17285156,\n        0.99609375,\n        0.5546875,\n        -0.18554688,\n        0.103027344,\n        -0.12402344,\n        0.140625,\n        -0.13183594,\n        0.0625,\n        -0.14355469,\n        0.16308594,\n        0.546875,\n        -0.017333984,\n        -0.21191406,\n        -0.76171875,\n        -0.12890625,\n        -0.014221191,\n        -0.21972656,\n        -0.31054688,\n        -0.57421875,\n        0.28320312,\n        -0.41601562,\n        0.57421875,\n        0.00046157837,\n        -0.12695312,\n        0.40625,\n        0.07714844,\n        -0.546875,\n        -0.13964844,\n        0.56640625,\n        0.13476562,\n        0.015197754,\n        -0.53125,\n        0.53515625,\n        0.3828125,\n        -0.51953125,\n        -0.0041503906,\n        0.34960938,\n        0.05444336,\n        -0.026245117,\n        -0.19824219,\n        -0.20605469,\n        0.265625,\n        -0.3203125,\n        -0.27929688,\n        -0.10888672,\n        0.578125,\n        0.20703125,\n        -0.106933594,\n        0.08154297,\n        -0.12011719,\n        -0.06982422,\n        -0.071777344,\n        -0.1875,\n        0.26757812,\n        -0.004760742,\n        0.041503906,\n        0.08300781,\n        0.19238281,\n        -0.01184082,\n        0.4453125,\n        0.005554199,\n        -0.064453125,\n        0.13085938,\n        -0.0056762695,\n        -0.51171875,\n        0.061279297,\n        -0.265625,\n        -0.65234375,\n        -0.10546875,\n        0.19335938,\n        0.24609375,\n        0.546875,\n        0.008605957,\n        -0.29882812,\n        -0.19726562,\n        0.390625,\n        -0.33203125,\n        -0.55859375,\n        -0.27929688,\n        0.37109375,\n        0.10888672,\n        -0.083496094,\n        -0.37695312,\n        -0.29882812,\n        0.32226562,\n        0.53515625,\n        0.19921875,\n        0.119628906,\n        -0.25390625,\n        -0.15234375,\n        0.515625,\n        -0.31835938,\n        -0.115722656,\n        -0.17285156,\n        -0.022338867,\n        0.18261719,\n        -0.10644531,\n        0.023071289,\n        0.19335938,\n        -0.08642578,\n        0.37304688,\n        0.053222656,\n        0.06982422,\n        0.060546875,\n        0.32226562,\n        -0.41796875,\n        -0.09863281,\n        0.45898438,\n        0.06298828,\n        0.00092697144,\n        0.69140625,\n        0.453125,\n        0.6328125,\n        -0.115722656,\n        -0.0045776367,\n        -0.5546875,\n        0.24316406,\n        0.33398438,\n        0.6796875,\n        0.3515625,\n        -0.17773438,\n        -0.19140625,\n        0.019897461,\n        -0.26171875,\n        0.24707031,\n        0.6328125,\n        0.29492188,\n        0.3046875,\n        -0.15527344,\n        0.33789062,\n        0.17871094,\n        0.13378906,\n        -0.0016784668,\n        -0.27734375,\n        -0.030761719,\n        -0.11621094,\n        -0.015075684,\n        0.296875,\n        -0.33203125,\n        0.5,\n        0.58984375,\n        -0.03564453,\n        0.15039062,\n        0.17675781,\n        -0.72265625,\n        -0.49804688,\n        -0.12402344,\n        -0.546875,\n        -0.42773438,\n        0.020507812,\n        0.010192871,\n        -0.0154418945,\n        0.26171875,\n        0.30664062,\n        0.609375,\n        0.055908203,\n        -0.015625,\n        0.39453125,\n        -0.24414062,\n        -0.35546875,\n        0.18847656,\n        -0.07763672,\n        -0.78515625,\n        -0.24804688,\n        -0.20898438,\n        0.02722168,\n        0.58984375,\n        -0.61328125,\n        0.34375,\n        -0.06201172,\n        -0.7109375,\n        0.16113281,\n        -0.34179688,\n        -0.07519531,\n        0.30859375,\n        -0.14355469,\n        0.19335938,\n        0.045898438,\n        -0.37890625,\n        0.03173828,\n        0.49023438,\n        0.50390625,\n        -0.06542969,\n        -0.032226562,\n        0.19335938,\n        0.25976562,\n        0.23730469,\n        -0.32617188,\n        -0.096191406,\n        0.46289062,\n        0.09472656,\n        0.37304688,\n        0.5859375,\n        0.10595703,\n        0.78125,\n        0.09277344,\n        -0.17773438,\n        0.52734375,\n        0.3203125,\n        0.32421875,\n        0.6015625,\n        0.16015625,\n        -0.064941406,\n        0.20507812,\n        -0.16308594,\n        0.29101562,\n        -0.14941406,\n        0.1484375,\n        0.14160156,\n        -0.546875,\n        0.15136719,\n        -0.41210938,\n        0.59765625,\n        -0.33789062,\n        0.22167969,\n        -0.2421875,\n        0.4765625,\n        0.58203125,\n        0.22753906,\n        0.16210938,\n        -0.13183594,\n        -0.47460938,\n        0.29296875,\n        0.22265625,\n        0.05517578,\n        -0.62890625,\n        0.20605469,\n        0.48632812,\n        -0.38867188,\n        -0.00062561035,\n        0.46289062,\n        -0.034179688,\n        0.21484375,\n        -0.07128906,\n        -0.05517578,\n        0.29101562,\n        -0.13867188,\n        -0.60546875,\n        0.32421875,\n        -0.12597656,\n        0.17480469,\n        -0.012756348,\n        0.029663086,\n        0.20996094,\n        -0.13085938,\n        -0.11669922,\n        0.013183594,\n        -0.39257812,\n        -0.33203125,\n        -0.26757812,\n        0.15917969,\n        -0.035888672,\n        -0.18652344,\n        -0.24414062,\n        0.21484375,\n        -0.04736328,\n        0.16601562,\n        -0.56640625,\n        -0.25976562,\n        -0.31835938,\n        0.68359375,\n        0.40625,\n        -0.66796875,\n        0.06347656,\n        -0.20996094,\n        -0.07421875,\n        0.16894531,\n        -0.2265625,\n        -0.060546875,\n        0.359375,\n        -0.6796875,\n        0.703125,\n        -0.6171875,\n        0.26367188,\n        -0.15429688,\n        -0.020141602,\n        0.453125,\n        0.51953125,\n        -0.32421875,\n        0.13476562,\n        0.13671875,\n        -0.38476562,\n        -0.059570312,\n        0.26367188,\n        -0.47851562,\n        -0.27148438,\n        -0.27734375,\n        -0.087890625,\n        -0.41210938,\n        -0.06542969,\n        -0.04345703,\n        -0.048339844,\n        -0.3515625,\n        -0.28125,\n        0.21386719,\n        -0.18847656,\n        0.100097656,\n        0.19140625,\n        -0.1328125,\n        -0.067871094,\n        -0.44335938,\n        0.25976562,\n        -0.22363281,\n        0.07373047,\n        -0.29882812,\n        0.68359375,\n        -0.07861328,\n        0.44140625,\n        0.40820312,\n        -0.33007812,\n        0.12597656,\n        -0.020263672,\n        -0.15820312,\n        -0.03515625,\n        -0.047607422,\n        -0.3984375,\n        0.34960938,\n        0.47460938,\n        -0.60546875,\n        0.78515625,\n        0.64453125,\n        0.17285156,\n        -0.65234375,\n        -0.013427734,\n        -0.29492188,\n        0.095214844,\n        -0.12890625,\n        -0.24609375,\n        0.1171875,\n        0.022949219,\n        0.44921875,\n        -0.22070312,\n        0.07714844,\n        0.15917969,\n        -0.3984375,\n        0.16015625,\n        0.5703125,\n        0.359375,\n        0.4921875,\n        0.26953125,\n        -0.5078125,\n        0.203125,\n        0.009765625,\n        0.33398438,\n        -0.43164062,\n        -0.029663086,\n        -0.43164062,\n        0.36523438,\n        0.33007812,\n        0.24902344,\n        0.31835938,\n        -0.15039062,\n        -0.2578125,\n        -0.0024871826,\n        -0.099609375,\n        0.096191406,\n        0.07421875,\n        0.23730469,\n        -0.033447266,\n        0.33007812,\n        -0.17089844,\n        0.19042969,\n        0.087890625,\n        0.14355469,\n        -0.08105469,\n        -0.41992188,\n        -0.21972656,\n        0.27539062,\n        -0.49804688,\n        0.359375,\n        -0.33007812,\n        0.050048828,\n        -0.2421875,\n        0.453125,\n        0.016601562,\n        0.33398438,\n        0.020141602,\n        0.13085938,\n        0.024780273,\n        -0.47460938,\n        -0.20898438,\n        0.071777344,\n        0.18164062,\n        -0.036621094,\n        0.17382812,\n        -0.15722656,\n        0.328125,\n        -0.064453125,\n        -0.40234375,\n        -0.26171875,\n        -0.049804688,\n        -0.30859375,\n        0.5078125,\n        -0.00039291382,\n        0.08203125,\n        -0.20800781,\n        -0.021972656,\n        -0.32421875,\n        0.35351562,\n        0.34570312,\n        -0.06542969,\n        -0.62109375,\n        -0.15722656,\n        -0.48632812,\n        0.2890625,\n        0.13183594,\n        -0.17285156,\n        -0.24023438,\n        -0.5078125,\n        0.16992188,\n        -0.044921875,\n        -0.46679688,\n        -0.18652344,\n        0.33984375,\n        0.17675781,\n        -0.46875,\n        -0.44140625,\n        -0.13671875,\n        0.014465332,\n        -0.76953125,\n        0.23339844,\n        0.953125,\n        -0.008056641,\n        -0.25390625,\n        -0.56640625,\n        0.24609375,\n        0.036621094,\n        0.31445312,\n        -0.38476562,\n        -0.12597656,\n        -0.064453125,\n        0.21679688,\n        0.625,\n        0.46289062,\n        0.17578125,\n        -0.4921875,\n        0.5,\n        0.75,\n        0.14648438,\n        0.6953125,\n        -0.16210938,\n        -0.10205078,\n        0.5078125,\n        -0.22851562,\n        0.119628906,\n        -0.08203125,\n        -0.39648438,\n        -0.049804688,\n        -0.05493164,\n        0.23046875,\n        -0.22753906,\n        -0.21191406,\n        -0.44921875,\n        0.25195312,\n        -0.46679688,\n        0.20898438,\n        0.36132812,\n        -0.49609375,\n        0.26171875,\n        0.119140625,\n        0.22363281,\n        -0.025878906,\n        -0.375,\n        -0.11816406,\n        -0.06347656,\n        0.30664062,\n        -0.31640625,\n        0.05078125,\n        0.087890625,\n        0.043945312,\n        0.32617188,\n        0.29492188,\n        -0.08544922,\n        0.33203125,\n        -0.032714844,\n        0.18261719,\n        -0.37109375,\n        0.875,\n        -0.029541016,\n        -0.27148438,\n        -0.36523438,\n        -0.22851562,\n        -0.4453125,\n        -0.59375,\n        -0.21484375,\n        -0.15429688,\n        -0.075683594,\n        -0.01928711,\n        0.118652344,\n        -0.13574219,\n        0.021118164,\n        -0.44726562,\n        -0.123535156,\n        0.18457031,\n        0.29101562,\n        0.125,\n        0.64453125,\n        0.24707031,\n        0.044189453,\n        0.10644531,\n        -0.37109375,\n        0.2734375,\n        -0.103515625,\n        -0.41796875,\n        0.07373047,\n        0.27734375,\n        -0.37890625,\n        0.31445312,\n        0.26171875,\n        0.17871094,\n        0.017089844,\n        -0.12792969,\n        -0.27734375,\n        -0.34179688,\n        0.16015625,\n        0.49023438,\n        0.5234375,\n        0.296875,\n        0.22558594,\n        -0.48046875,\n        -0.09375,\n        0.58203125,\n        -0.013000488,\n        0.609375,\n        -0.05859375,\n        -0.044189453,\n        0.33398438,\n        -0.17773438,\n        0.21679688,\n        -0.57421875,\n        -0.390625,\n        0.2421875,\n        -0.25976562,\n        -0.515625,\n        0.703125,\n        -0.515625,\n        0.25976562,\n        -0.40039062,\n        -0.006286621,\n        0.34375,\n        -0.51171875,\n        0.15722656,\n        -0.6328125,\n        -0.25,\n        0.296875,\n        -0.62109375,\n        -0.203125,\n        0.5546875,\n        0.234375,\n        0.16699219,\n        -0.59375,\n        -0.14453125,\n        0.11230469,\n        -0.28515625,\n        -0.23535156,\n        0.123535156,\n        -0.13378906,\n        -0.5703125,\n        -0.13964844,\n        -0.06201172,\n        -0.3515625,\n        0.16308594,\n        0.20800781,\n        0.24707031,\n        -0.38476562,\n        0.16015625,\n        0.625,\n        -0.0019836426,\n        0.37109375,\n        0.765625,\n        0.16894531,\n        -0.09082031,\n        0.1640625,\n        0.42382812,\n        -0.6796875,\n        -0.15625,\n        -0.6875,\n        -0.40234375,\n        -0.14355469,\n        -0.58203125,\n        0.080566406,\n        0.28710938,\n        -0.38671875,\n        -0.20703125,\n        0.55078125,\n        0.23632812,\n        0.0034332275,\n        -0.59375,\n        -0.25585938,\n        -0.5625,\n        -0.34765625,\n        -0.049804688,\n        -0.25390625,\n        -0.052246094,\n        -0.23632812,\n        0.09033203,\n        0.26953125,\n        -0.34375,\n        -0.47460938,\n        0.19433594,\n        0.043945312,\n        -0.21289062,\n        -0.059570312,\n        0.022094727,\n        -0.20703125,\n        -0.44921875,\n        0.104003906,\n        -0.3515625,\n        0.22753906,\n        -0.045410156,\n        0.3046875,\n        -0.43164062,\n        0.080078125,\n        0.09863281,\n        0.24121094,\n        0.0025787354,\n        0.22949219,\n        -0.27734375,\n        -0.22949219,\n        -0.17773438,\n        0.078125,\n        0.18945312,\n        0.5,\n        -0.22265625,\n        0.14648438,\n        0.27734375,\n        0.6171875,\n        -0.5234375,\n        0.328125,\n        -0.17382812,\n        0.48242188,\n        -0.092285156,\n        -0.06640625,\n        -0.10839844,\n        -0.0048217773,\n        0.32421875,\n        -0.6328125,\n        -0.14160156,\n        0.04272461,\n        0.36328125,\n        0.095703125,\n        0.055419922,\n        -0.27734375,\n        -0.11425781,\n        0.6171875,\n        -0.14257812,\n        -0.48046875,\n        0.29296875,\n        -0.24511719,\n        0.13867188,\n        0.265625,\n        -0.27734375,\n        -0.12109375,\n        0.2890625,\n        -0.08154297,\n        -0.22070312,\n        -0.41601562,\n        0.16503906,\n        0.076171875,\n        -0.37890625,\n        -0.44921875,\n        -0.2109375,\n        -0.14355469,\n        -0.27734375,\n        0.3359375,\n        -0.34765625,\n        0.076660156,\n        0.080566406,\n        0.05517578,\n        0.04248047,\n        0.31835938,\n        0.6484375,\n        0.82421875,\n        0.43164062,\n        -0.38476562,\n        -0.33789062,\n        -0.15136719,\n        0.07714844,\n        -0.15234375,\n        -0.41796875,\n        0.15039062,\n        -0.16308594,\n        -0.00982666,\n        -0.41796875,\n        -0.234375,\n        0.29492188,\n        0.04248047,\n        0.36132812,\n        -0.06201172,\n        0.421875,\n        -0.49023438,\n        -0.45703125,\n        -0.2890625,\n        -0.65234375,\n        -0.4140625,\n        -0.13671875,\n        -0.33398438,\n        0.33007812,\n        0.47851562,\n        -0.009216309,\n        0.12109375,\n        0.072265625,\n        0.16503906,\n        -0.1171875,\n        0.515625,\n        0.32421875,\n        -0.24414062,\n        -0.09033203,\n        -0.27734375,\n        -0.17675781,\n        0.25585938,\n        -0.22167969,\n        -0.14648438,\n        0.453125,\n        0.055908203,\n        0.115722656,\n        -0.12207031,\n        -0.059814453,\n        0.21679688,\n        0.6640625,\n        -0.13964844,\n        -0.19726562,\n        0.100097656,\n        -0.37890625,\n        -0.38671875,\n        -0.08691406,\n        0.091796875,\n        -0.51953125,\n        -0.056396484,\n        0.64453125,\n        0.42773438,\n        0.8046875,\n        -0.10058594,\n        -0.23828125,\n        -0.140625,\n        0.011657715,\n        0.19238281,\n        -0.41210938,\n        -0.38476562,\n        -0.2890625,\n        0.46484375,\n        -0.052490234,\n        0.06689453,\n        0.34960938,\n        0.29101562,\n        0.07519531,\n        0.31445312,\n        0.6875,\n        0.00491333,\n        -0.10449219,\n        0.20800781,\n        0.045654297,\n        -0.12158203,\n        0.13867188,\n        -0.66796875,\n        -0.49414062,\n        -0.1640625,\n        0.21289062,\n        0.31054688,\n        0.045166016,\n        -0.6484375,\n        -0.375,\n        -0.13671875,\n        0.22460938,\n        -0.4375,\n        -0.2265625,\n        0.44335938,\n        0.25585938,\n        0.21972656,\n        -0.3046875,\n        -0.119140625,\n        -0.60546875,\n        0.039794922,\n        0.03112793,\n        0.46484375,\n        0.55078125,\n        -0.0095825195,\n        -0.4921875,\n        -0.58203125,\n        -0.2421875,\n        -0.20898438,\n        -0.15039062,\n        -0.010070801,\n        -0.10546875,\n        -0.52734375,\n        -0.20019531,\n        -0.328125,\n        0.011108398,\n        0.17773438,\n        0.33398438,\n        -0.09765625,\n        0.09472656,\n        0.051757812,\n        -0.3828125,\n        -0.45117188,\n        0.25976562,\n        -0.060791016,\n        0.6875,\n        -0.1015625,\n        -0.020874023,\n        -0.15039062,\n        0.07910156,\n        0.075683594,\n        -0.453125,\n        -0.005065918,\n        0.03112793,\n        -0.22949219,\n        0.16308594,\n        0.07128906,\n        -0.4921875,\n        -0.072753906,\n        0.66796875,\n        0.16308594,\n        0.51171875,\n        0.06689453,\n        -0.109375,\n        -0.2734375,\n        -0.32226562,\n        0.104003906,\n        0.20507812,\n        -0.359375,\n        -0.61328125,\n        -0.044433594,\n        -0.13085938,\n        0.030151367,\n        0.34765625,\n        -0.17773438,\n        0.5234375,\n        0.375,\n        0.74609375,\n        -0.07714844,\n        0.1875,\n        -0.087890625,\n        -0.17089844,\n        0.18554688,\n        0.029418945,\n        -0.12597656,\n        0.17578125,\n        -0.31640625,\n        0.33203125,\n        -0.37109375,\n        -0.20410156,\n        -0.21777344,\n        -0.7734375,\n        -0.020751953,\n        0.09033203,\n        0.064453125,\n        -0.32617188,\n        0.22363281,\n        -0.421875,\n        -0.515625,\n        -0.6796875,\n        0.39648438,\n        -0.25390625,\n        0.10986328,\n        0.20019531,\n        0.44726562,\n        0.47070312,\n        0.86328125,\n        -0.11376953,\n        -0.36328125,\n        -0.1953125,\n        0.23242188,\n        -0.56640625,\n        0.12158203,\n        0.4140625,\n        -0.17871094,\n        0.4765625,\n        0.21191406,\n        -0.01940918,\n        0.23632812,\n        -0.12597656\n    ],\n    \"inputTextTokenCount\": 41\n}"
+										},
+										{
+											"name": "stability.stable-diffusion-xl",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													},
+													{
+														"key": "x-amzn-bedrock-save",
+														"value": "true",
+														"type": "text"
+													},
+													{
+														"key": "accept",
+														"value": "image/png",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n  \"text_prompts\": [\r\n    { \r\n      \"text\": \"Picture of a bird\" \r\n    }\r\n  ],\r\n  \"cfg_scale\":10,\r\n  \"seed\":20,\r\n  \"steps\":50\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/stability.stable-diffusion-xl/invoke",
+													"protocol": "https",
+													"host": [
+														"bedrock-runtime",
+														"{{AWS_Region}}",
+														"amazonaws",
+														"com"
+													],
+													"path": [
+														"model",
+														"stability.stable-diffusion-xl",
+														"invoke"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\"inputText\": \"Picture of a bird\"}"
+										},
+										{
+											"name": "anthropic.claude-v2",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "X-Amzn-Bedrock-Save",
+														"value": "true",
+														"description": "Determines whether to save this prompt in your prompt history. Enter true or false. The default is false\n",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": " {\"prompt\": \"\\n\\nHuman:Hello \\n\\nAssistant:\",\r\n    \"temperature\": 1,\r\n    \"top_p\": 1,\r\n    \"top_k\": 500,\r\n    \"max_tokens_to_sample\": 500,\r\n    \"stop_sequences\": [\"\\n\\nHuman:\"]\r\n }",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+													"protocol": "https",
+													"host": [
+														"bedrock-runtime",
+														"{{AWS_Region}}",
+														"amazonaws",
+														"com"
+													],
+													"path": [
+														"model",
+														":model_identifier",
+														"invoke"
+													],
+													"variable": [
+														{
+															"key": "model_identifier",
+															"value": "anthropic.claude-v2",
+															"description": "Identifier of the model"
+														}
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								},
+								{
+									"name": "InvokeModelWithResponseStream: Invoke the specified Bedrock model to run inference using the input provided. Return the response in a stream",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "X-Amzn-Bedrock-Save",
+												"value": "true",
+												"description": "Determines whether to save this prompt in your prompt history. Enter true or false. The default is false",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"inputText\": \"Hello world\"} ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_Identifier/invoke-with-response-stream",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												":model_Identifier",
+												"invoke-with-response-stream"
+											],
+											"variable": [
+												{
+													"key": "model_Identifier",
+													"value": "amazon.titan-tg1-large",
+													"description": "Id of the model to invoke using the streaming request"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "amazon.titan-tg1-large",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/vnd.amazon.eventstream"
+													},
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"value": "application/json",
+														"type": "text"
+													},
+													{
+														"key": "x-amzn-bedrock-save",
+														"value": "true",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\"inputText\": \"Hello world\"} ",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://bedrock.us-east-1.amazonaws.com/model/amazon.titan-tg1-large/invoke-with-response-stream",
+													"protocol": "https",
+													"host": [
+														"bedrock",
+														"us-east-1",
+														"amazonaws",
+														"com"
+													],
+													"path": [
+														"model",
+														"amazon.titan-tg1-large",
+														"invoke-with-response-stream"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"created\": \"<integer>\",\n  \"owned_by\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "DeleteCustomModel: Deletes a custom model that you created earlier",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/custom-models/:model_Identifier/",
+											"protocol": "https",
+											"host": [
+												"bedrock",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"custom-models",
+												":model_Identifier",
+												""
+											],
+											"variable": [
+												{
+													"key": "model_Identifier",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ListFoundationModels: List of Bedrock foundation models that you can use",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/foundation-models?",
+									"protocol": "https",
+									"host": [
+										"bedrock",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"foundation-models"
+									],
+									"query": [
+										{
+											"key": "byProvider",
+											"value": "Amazon",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": null,
+											"description": "A Bedrock model provider"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ListCustomModels: Returns a list of the custom models that you have created with the CreateModelCustomizationJob operation",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://bedrock.{{AWS_Region}}.amazonaws.com/custom-models",
+									"protocol": "https",
+									"host": [
+										"bedrock",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"custom-models"
+									],
+									"query": [
+										{
+											"key": "creationTimeAfter",
+											"value": "",
+											"description": "Return custom models created after the specified time",
+											"disabled": true
+										},
+										{
+											"key": "creationTimeBefore",
+											"value": "",
+											"description": "Return custom models created before the specified time.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "maxResults",
+											"value": "10",
+											"description": "Maximum number of results to return in the response.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "nameContains",
+											"value": "",
+											"description": "Return custom models only if the job name contains these characters.\n\n\n\n",
+											"disabled": true
+										},
+										{
+											"key": "sortBy",
+											"value": "",
+											"description": "The field to sort by in the returned list of models.\n\n",
+											"disabled": true
+										},
+										{
+											"key": "sortOrder",
+											"value": "",
+											"description": "The sort order of the results.\n\n",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "The following actions are supported by Bedrock API:\n\n- [CreateModelCustomizationJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelCustomizationJob.html)\n    \n- [DeleteCustomModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_DeleteCustomModel.html)\n    \n- [DeletePrompt](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_DeletePrompt.html)\n    \n- [GetCustomModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetCustomModel.html)\n    \n- [GetModelCustomizationJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetModelCustomizationJob.html)\n    \n- [GetPrompt](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetPrompt.html)\n    \n- [InvokeModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_InvokeModel.html)\n    \n- [InvokeModelWithResponseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_InvokeModelWithResponseStream.html)\n    \n- [ListCustomModels](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_ListCustomModels.html)\n    \n- [ListFoundationModels](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_ListFoundationModels.html)\n    \n- [ListModelCustomizationJobs](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_ListModelCustomizationJobs.html)\n    \n- [ListPrompts](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_ListPrompts.html)\n    \n- [StopModelCustomizationJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_StopModelCustomizationJob.html)\n    \n- [UpdatePrompt](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_UpdatePrompt.html)"
+		},
+		{
+			"name": "Use Cases",
+			"item": [
+				{
+					"name": "Embeddings",
+					"item": [
+						{
+							"name": "Creates an embedding vector representing the input text",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"inputText\": \"Amazon Bedrock supports foundation models from industry-leading providers such as AI21 Labs, Anthropic, Stability AI, and Amazon. Choose the model that is best suited to achieving your unique goals.\"\n    } ",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "amazon.titan-embed-text-v1",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n- amazon.titan-e1t-medium"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Generation",
+					"item": [
+						{
+							"name": "Generate Text",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"prompt\": \"\\n\\nHuman:story of two dogs\\n\\nAssistant:\"\n,\"max_tokens_to_sample\":100\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "anthropic.claude-v2",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Generate Email Content",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-amzn-bedrock-save",
+												"value": "true",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"inputText\": \"Command: Write an email from Bob, Customer Service Manager, to the customer \\\"John Doe\\\" who provided negative feedback on the service provided by our customer support engineer\",\r\n    \"textGenerationConfig\": {\r\n        \"maxTokenCount\": 4096,\r\n        \"stopSequences\": [],\r\n        \"temperature\": 0,\r\n        \"topP\": 0.9\r\n    }\r\n}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												"amazon.titan-tg1-large",
+												"invoke"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Zero Shot Generation-Email Content",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-amzn-bedrock-save",
+												"value": "true",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"inputText\": \"\\\"Write an email from Bob, Customer Service Manager,to the customer \\\"John Doe\\\" that provided negative feedback on the service provided by our customer support engineer.\\n\\nHuman:\",\r\n    \"textGenerationConfig\": {\r\n        \"maxTokenCount\": 4096,\r\n        \"stopSequences\": [],\r\n        \"temperature\": 0,\r\n        \"topP\": 0.9\r\n    }\r\n}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												"amazon.titan-tg1-large",
+												"invoke"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Contextual Generation-Email Content",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-amzn-bedrock-save",
+												"value": "true",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"inputText\": \" Scenerio: \\\"feedback received from the customer: Hello Bob, I am very disappointed with the recent experience I had when I called your customer support.I was expecting an immediate call back but it took three days for us to get a call back.The first suggestion to fix the problem was incorrect. Ultimately the problem was fixed after three days.We are very unhappy with the response provided and may consider taking our business elsewhere\\\" \\n Task:Create an apology email from the Service Manager Bob to John Doe \",\r\n    \"textGenerationConfig\": { \r\n        \"maxTokenCount\": 4096,\r\n        \"stopSequences\": [],\r\n        \"temperature\": 0,\r\n        \"topP\": 0.9\r\n    }\r\n}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												"amazon.titan-tg1-large",
+												"invoke"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Generate Blog",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-amzn-bedrock-save",
+												"value": "true",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"inputText\": \"\\\"Command: Write me a blog about making strong business decisions as a leader.Blog: \\\"\",\r\n    \"textGenerationConfig\": { \r\n        \"maxTokenCount\": 4096,\r\n        \"stopSequences\": [],\r\n        \"temperature\": 0,\r\n        \"topP\": 0.9\r\n    }\r\n}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												"amazon.titan-tg1-large",
+												"invoke"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Summarization",
+					"item": [
+						{
+							"name": "Summarize Text",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"inputText\": \"Hello world\",\n\"textGenerationConfig\":{\n        \"maxTokenCount\":4096,\n        \"stopSequences\":[],\n        \"temperature\":0,\n        \"topP\":0.9\n        }\n    } ",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "amazon.titan-tg1-large",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-amzn-bedrock-save",
+												"value": "true",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"inputText\": \"\\\"Please provide a summary of the following text. Do not add any information that is not mentioned in the text below. \\n <text> \\n AWS took all of that feedback from customers, and today we are excited to announce Amazon Bedrock, \\n a new service that makes FMs from AI21 Labs, Anthropic, Stability AI, and Amazon accessible via an API. \\n Bedrock is the easiest way for customers to build and scale generative AI-based applications using FMs, \\n democratizing access for all builders. Bedrock will offer the ability to access a range of powerful FMs \\n for text and images—including Amazons Titan FMs, which consist of two new LLMs we’re also announcing \\n today—through a scalable, reliable, and secure AWS managed service. With Bedrock’s serverless experience, \\n customers can easily find the right model for what they’re trying to get done, get started quickly, privately \\n customize FMs with their own data, and easily integrate and deploy them into their applications using the AWS \\n tools and capabilities they are familiar with, without having to manage any infrastructure (including integrations \\n with Amazon SageMaker ML features like Experiments to test different models and Pipelines to manage their FMs at scale). </text>\\\"\",\r\n    \"textGenerationConfig\": {\r\n        \"maxTokenCount\": 4096,\r\n        \"stopSequences\": [],\r\n        \"temperature\": 0,\r\n        \"topP\": 0.9\r\n    }\r\n}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.us-east-1.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												"amazon.titan-tg1-large",
+												"invoke"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "QuestionAnswering",
+					"item": [
+						{
+							"name": "Task",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"inputText\": \"\\\"System: You are an helpful assistant. Answer questions in a concise way.  \\n Question: How can I fix a flat tire on my Audi A8? \\n Answer:\\\"\",\n\"textGenerationConfig\":{\n        \"maxTokenCount\":4096,\n        \"stopSequences\":[],\n        \"temperature\":0,\n        \"topP\":0.9\n        }\n    } ",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "amazon.titan-tg1-large",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Product Features",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"inputText\": \"Answer based on context: \\n The newest and most innovative Kindle yet lets you take notes on millions of books and documents, write lists and journals, and more. \\n For readers who have always wished they could write in their eBooks, Amazon’s new Kindle lets them do just that. The Kindle Scribe is the first Kindle for reading and writing and allows users to supplement their books and documents with notes, lists, and more. \\n Here’s everything you need to know about the Kindle Scribe, including frequently asked questions. \\n The Kindle Scribe makes it easy to read and write like you would on paper \\n The Kindle Scribe features a 10.2-inch, glare-free screen (the largest of all Kindle devices), crisp 300 ppi resolution, and 35 LED front lights that automatically adjust to your environment. Further personalize your experience with the adjustable warm light, font sizes, line spacing, and more. \\n It comes with your choice of the Basic Pen or the Premium Pen, which you use to write on the screen like you would on paper. They also attach magnetically to your Kindle and never need to be charged. The Premium Pen includes a dedicated eraser and a customizable shortcut button. \\n The Kindle Scribe has the most storage options of all Kindle devices: choose from 8 GB, 16 GB, or 32 GB to suit your level of reading and writing. \\n Question:what are the key features of new Kindle? \\n Answer:\",\n\"textGenerationConfig\":{\n        \"maxTokenCount\":4096,\n        \"stopSequences\":[],\n        \"temperature\":0,\n        \"topP\":0.9\n        }\n    } ",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+											"protocol": "https",
+											"host": [
+												"bedrock-runtime",
+												"{{AWS_Region}}",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"model",
+												":model_identifier",
+												"invoke"
+											],
+											"variable": [
+												{
+													"key": "model_identifier",
+													"value": "amazon.titan-tg1-large",
+													"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 16 Sep 2023 05:44:11 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "222"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "x-amzn-RequestId",
+											"value": "1a256f1c-ec0b-43df-be6b-a83f90866360"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"inputTextTokenCount\": 305,\n    \"results\": [\n        {\n            \"tokenCount\": 39,\n            \"outputText\": \"\\nThe key features of new Kindle are:\\n1.Largest of all Kindle devices\\n2.Crisp 300 ppi resolution\\n3.35 LED front lights\",\n            \"completionReason\": \"FINISH\"\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "ChatBot",
+					"item": [
+						{
+							"name": "Task",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"inputText\": \"\\\"System: You are an helpful assistant. Answer questions in a concise way.  \\n Question: How can I fix a flat tire on my Audi A8? \\n Answer:\\\"\",\n\"textGenerationConfig\":{\n        \"maxTokenCount\":4096,\n        \"stopSequences\":[],\n        \"temperature\":0,\n        \"topP\":0.9\n        }\n    } ",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "amazon.titan-tg1-large",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Translate",
+					"item": [
+						{
+							"name": "Translate to Multiple Languages",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"inputText\": \"\\\"Statement: \\\"My name is Arthur\\\" \\n                              Task:Translate Statement to German, Spanish & French \",\n\"textGenerationConfig\":{\n        \"maxTokenCount\":4096,\n        \"stopSequences\":[],\n        \"temperature\":0,\n        \"topP\":0.9\n        }\n    } ",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "amazon.titan-tg1-large",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Instruction To Sql",
+					"item": [
+						{
+							"name": "Generate Sql",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"inputText\": \"Create SQL statement from instruction. \\n Database: Customers(CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country) \\n Request: all the countries we have customers in without repetitions. \\n SQL statement: SELECT DISTINCT Country FROM Customers; \\n  ## \\n Create SQL statement from instruction. \\n Database: Orders(OrderID, CustomerID, EmployeeID, OrderDate, ShipperID) \\n Request: select all the orders from customer id 1. \\n SQL statement: SELECT * FROM Orders WHERE CustomerID = 1; \\n ## \\n Create SQL statement from instruction. Database: Products(ProductID, ProductName, SupplierID, CategoryID, Unit, Price) \\n Request: selects all products from categories 1 and 7 \\n SQL statement: SELECT * FROM Products WHERE CategoryID = 1 OR CategoryID = 7; \\n ## \\n Create SQL statement from instruction. \\n Database: Customers(CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country) \\n Request: change the first customer's name to Alfred Schmidt who lives in Frankfurt city. \\n SQL statement: \",\n\"textGenerationConfig\":{\n        \"maxTokenCount\":4096,\n        \"stopSequences\":[],\n        \"temperature\":0,\n        \"topP\":0.9\n        }\n    } ",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "amazon.titan-tg1-large",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Image Generation",
+					"item": [
+						{
+							"name": "Character Design",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"text_prompts\": [\n    { \n      \"text\": \"Character design of a robot warrior, concept art, contest winner, diverse medical cybersuits, Football armor, triade color scheme, black shirt underneath armor, in golden armor, clothes in military armor, high resolution render, octane \" \n    }\n  ],\n  \"cfg_scale\":10,\n  \"seed\":20,\n  \"steps\":50\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "stability.stable-diffusion-xl",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sentiment Analysis / Classification",
+					"item": [
+						{
+							"name": "Movie Review",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"inputText\": \"Review:This movie is so great and once again dazzles and delights us Is this movie review sentence negative or positive? \\n                                       OPTIONS: -positive -negative \",\n\"textGenerationConfig\":{\n        \"maxTokenCount\":4096,\n        \"stopSequences\":[],\n        \"temperature\":0,\n        \"topP\":0.9\n        }\n    } ",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/:model_identifier/invoke",
+									"protocol": "https",
+									"host": [
+										"bedrock-runtime",
+										"{{AWS_Region}}",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"model",
+										":model_identifier",
+										"invoke"
+									],
+									"variable": [
+										{
+											"key": "model_identifier",
+											"value": "amazon.titan-tg1-large",
+											"description": "Available text generation models under Amazon Bedrock have the following IDs:\n\n-  amazon.titan-tg1-large\n- ai21.j2-grande-instruct\n- ai21.j2-jumbo-instruct\n- anthropic.claude-instant-v1\n- anthropic.claude-v1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-text-express-v1/invoke",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "x-amzn-bedrock-save",
+								"value": "true",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"inputText\": \"Hello world\"} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+							"protocol": "https",
+							"host": [
+								"bedrock-runtime",
+								"{{AWS_Region}}",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"model",
+								"amazon.titan-tg1-large",
+								"invoke"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://bedrock-runtime.us-east-1.amazonaws.com/model/anthropic.claude-instant-v1/invoke",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-amzn-bedrock-save",
+								"value": "true",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "modelId",
+								"value": "anthropic.claude-v2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"prompt\": \"\\n\\nHuman:story of two dogs\\n\\nAssistant:\"\r\n,\"max_tokens_to_sample\":100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/anthropic.claude-v2/invoke",
+							"protocol": "https",
+							"host": [
+								"bedrock-runtime",
+								"{{AWS_Region}}",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"model",
+								"anthropic.claude-v2",
+								"invoke"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/stability.stable-diffusion-xl/invoke",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-amzn-bedrock-save",
+								"value": "true",
+								"type": "text"
+							},
+							{
+								"key": "accept",
+								"value": "image/png",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text_prompts\": [\r\n    { \r\n      \"text\": \"Picture of a bird\" \r\n    }\r\n  ],\r\n  \"cfg_scale\":10,\r\n  \"seed\":20,\r\n  \"steps\":50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/stability.stable-diffusion-xl/invoke",
+							"protocol": "https",
+							"host": [
+								"bedrock-runtime",
+								"{{AWS_Region}}",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"model",
+								"stability.stable-diffusion-xl",
+								"invoke"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-amzn-bedrock-save",
+								"value": "true",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\": \"Hello world\",\r\n    \"textGenerationConfig\": {\r\n        \"temperature\": 1,\r\n        \"topP\": 1,\r\n        \"maxTokenCount\": 500,\r\n        \"stopSequences\": [\"\\n\"]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bedrock-runtime.{{AWS_Region}}.amazonaws.com/model/amazon.titan-tg1-large/invoke",
+							"protocol": "https",
+							"host": [
+								"bedrock-runtime",
+								"{{AWS_Region}}",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"model",
+								"amazon.titan-tg1-large",
+								"invoke"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "awsv4",
+		"awsv4": [
+			{
+				"key": "accessKey",
+				"value": "{{AccessKey}}",
+				"type": "string"
+			},
+			{
+				"key": "region",
+				"value": "{{AWS_Region}}",
+				"type": "string"
+			},
+			{
+				"key": "secretKey",
+				"value": "{{SecretKey}}",
+				"type": "string"
+			},
+			{
+				"key": "service",
+				"value": "bedrock",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AccessKey",
+			"value": "ExampleAccessKey"
+		},
+		{
+			"key": "SecretKey",
+			"value": "ExampleKey"
+		},
+		{
+			"key": "AWS_Region",
+			"value": "us-east-1"
+		}
+	]
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple AI-Assistant Bot</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"
+      integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Script to emit/receive events from socket.io server -->
+    <script defer src="chat.js"></script>
+
+    <!-- Stylesheet -->
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+      }
+      #app {
+        width: 85vw;
+        margin: 0 auto;
+      }
+      #chatContainer {
+        height: 75vh;
+        border: 1px solid #c2c2c2;
+        border-radius: 10px;
+        margin: 1rem 1rem;
+        padding: 0.5rem;
+        overflow: scroll;
+      }
+      #messageForm {
+        width: 80%;
+        position: absolute;
+        bottom: 10px;
+      }
+      .input {
+        margin: auto;
+        padding: 0.5rem;
+        margin: 0 0.5rem;
+        width: 70%;
+        border: 1px solid #c2c2c2;
+        border-radius: 2px;
+      }
+      .input:active,
+      .input:focus {
+        border-color: #9de3;
+      }
+
+      .btn {
+        padding: 0.5rem;
+        background-color: lightblue;
+        border: 1px solid #06b8ff;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: 600;
+      }
+      .center {
+        text-align: center;
+        margin: 0 auto;
+      }
+      .error {
+        border-color: #fa7962 !important;
+      }
+      /* default message styling for server notifications */
+      .message {
+        background-color: rgb(223, 174, 230);
+        color: #333;
+        font-size: 1.2rem;
+        text-align: center;
+        border-radius: 5px;
+        padding: 0.5rem;
+        margin-top: 1rem;
+      }
+      /* change colors and alignment for self and others messages */
+      .self-message {
+        background-color: lightgreen;
+        text-align: right;
+      }
+      .others-message {
+        background-color: lightblue;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="center">Chat app</h1>
+
+      <!-- Chat messages will be appended inside this container -->
+      <div id="chatContainer"></div>
+
+      <!-- Form to enter and submit new chat messages -->
+      <div class="center">
+        <form id="messageForm">
+          <input class="input center" type="text" id="messageInput" />
+          <button class="btn" type="submit" id="sendBtn">Ask!</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
